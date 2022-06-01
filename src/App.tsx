@@ -1,11 +1,13 @@
-function App() {
+import { Layout } from "./components/Layout";
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Savings Manager</p>
-      </header>
+      <Layout>
+        <header className="App-header">
+          <p>Savings Manager</p>
+        </header>
+      </Layout>
     </div>
   );
 }
-
-export default App;
