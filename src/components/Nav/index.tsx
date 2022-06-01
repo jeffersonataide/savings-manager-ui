@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 export const Nav = () => {
@@ -11,9 +12,9 @@ export const Nav = () => {
     <div>
       <div>
         {links.map((link) => (
-          <a href="/" key={uuidv4()}>
+          <Link to={link.url} key={uuidv4()}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </div>
     </div>

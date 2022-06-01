@@ -1,13 +1,12 @@
-import { Layout } from "./components/Layout";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./components/Router";
 
 export default function App() {
   return (
     <div className="App">
-      <Layout>
-        <header className="App-header">
-          <p>Savings Manager</p>
-        </header>
-      </Layout>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </div>
   );
 }
