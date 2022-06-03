@@ -5,9 +5,9 @@ export const Router = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<p>Savings Manager</p>} />
-        <Route path="/assets" element={<p>assets</p>} />
-        <Route path="/portfolio" element={<p>portfolio</p>} />
+        <Route path="/" element={<p>Home page</p>} />
+        <Route path="/assets" element={<p>assets page</p>} />
+        <Route path="/portfolio" element={<p>portfolio page</p>} />
       </Routes>
     </Layout>
   );
