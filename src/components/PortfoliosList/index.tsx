@@ -14,17 +14,23 @@ export const PortfoliosList = () => {
   }
 
   return (
-    <div>
-      PortfoliosList
-      <ul>
+    <table className="border-separate border-spacing-y-2 text-2xl w-full">
+      <thead>
+        <tr className="bg-emerald-300 text-white">
+          <th className="p-3 uppercase text-left">Name</th>
+        </tr>
+      </thead>
+      <tbody>
         {query.data?.portfolios.map((portfolio) => {
           return (
-            <li key={uuidv4()}>
-              {portfolio.id} - {portfolio.name}
-            </li>
+            <tr className="bg-slate-600 text-white">
+              <td key={uuidv4()} className="p-3">
+                {portfolio.name}
+              </td>
+            </tr>
           );
         })}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   );
 };
