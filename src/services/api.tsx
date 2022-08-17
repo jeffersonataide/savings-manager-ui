@@ -1,4 +1,4 @@
-interface TPortfolioBase {
+export interface TPortfolioBase {
   name: string;
 }
 
