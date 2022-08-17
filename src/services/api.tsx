@@ -41,3 +41,15 @@ export const createPortfolio = async (
 
   return response.json();
 };
+
+export const deletePortfolio = async (id: string): Promise<TPortfolio> => {
+  const response = await fetch(`${API_URL}/portfolios/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Error deleting the portfolio");
+  }
+
+  return response.json();
+};
