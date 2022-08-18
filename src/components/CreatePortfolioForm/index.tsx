@@ -16,7 +16,7 @@ export const CreatePortfolioForm = () => {
 
   return (
     <PortfolioForm
-      title={"Create Portfolio Form"}
+      title={"Create Portfolio"}
       submitButtonText={"Create"}
       onSubmit={handleSubmit}
     />
