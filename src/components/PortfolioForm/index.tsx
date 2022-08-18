@@ -7,15 +7,22 @@ interface PortfolioFormParams {
   onSubmit: (portfolio: TPortfolioBase) => void;
 }
 
+const PORTFOLIO_INITIAL = { name: "" };
+
 export const PortfolioForm = ({
   title,
   submitButtonText,
   onSubmit,
 }: PortfolioFormParams) => {
-  const [portfolio, setPortfolio] = useState<TPortfolioBase>({ name: "" });
+  const [portfolio, setPortfolio] = useState<TPortfolioBase>(PORTFOLIO_INITIAL);
 
   const onNameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setPortfolio({ ...portfolio, name: e.target.value });
+  };
+
+  const hanldeSubmit = () => {
+    onSubmit(portfolio);
+    setPortfolio(PORTFOLIO_INITIAL);
   };
 
   return (
@@ -33,7 +40,7 @@ export const PortfolioForm = ({
       <div className="flex justify-end">
         <button
           className="bg-white m-3 p-1 px-5 rounded-lg border-cyan-500 border-2"
-          onClick={() => onSubmit(portfolio)}
+          onClick={hanldeSubmit}
         >
           {submitButtonText}
         </button>
