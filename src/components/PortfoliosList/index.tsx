@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { deletePortfolio, fetchPortfolios } from "../../services/api";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import React, { useState } from "react";
 import { EditPortfolioForm } from "../EditPortfolioForm";
 
 export const PortfoliosList = () => {
@@ -46,13 +46,13 @@ export const PortfoliosList = () => {
       <tbody>
         {query.data?.portfolios.map((portfolio) => {
           return (
-            <>
+            <React.Fragment key={uuidv4()}>
               {portfolio.id === editPortfolioId ? (
                 <div className="flex justify-center">
                   <EditPortfolioForm id={portfolio.id} onSubmit={closeModal} />
                 </div>
               ) : null}
-              <tr className="bg-slate-600 text-white" key={uuidv4()}>
+              <tr className="bg-slate-600 text-white">
                 <td className="p-3">{portfolio.name}</td>
                 <td className="text-center space-x-3">
                   <button onClick={() => handleEditPortfolio(portfolio.id)}>
@@ -86,7 +86,7 @@ export const PortfoliosList = () => {
                   </button>
                 </td>
               </tr>
-            </>
+            </React.Fragment>
           );
         })}
       </tbody>
