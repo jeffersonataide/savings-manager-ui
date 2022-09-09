@@ -6,6 +6,7 @@ export const Nav = () => {
     { label: "Home", url: "/" },
     { label: "Assets", url: "/assets" },
     { label: "Portfolio", url: "/portfolio" },
+    { label: "Login", url: "/login" },
   ];
 
   return (
