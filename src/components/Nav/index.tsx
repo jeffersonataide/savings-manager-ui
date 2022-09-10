@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useUser } from "../../hooks/user";
 
 export const Nav = () => {
+  const { isLogged, handleLogout } = useUser();
+
   const links = [
     { label: "Home", url: "/" },
     { label: "Assets", url: "/assets" },
     { label: "Portfolio", url: "/portfolio" },
-    { label: "Login", url: "/login" },
   ];
 
   return (
@@ -21,6 +23,15 @@ export const Nav = () => {
             {link.label}
           </Link>
         ))}
+        {isLogged ? (
+          <button className="mx-2 sm:mx-5" onClick={handleLogout}>
+            Logout
+          </button>
+        ) : (
+          <Link className="mx-2 sm:mx-5" to="/login">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

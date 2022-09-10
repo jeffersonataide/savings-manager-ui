@@ -16,3 +16,12 @@ export const createUser = async (user: TUserCreate): Promise<TUserBase> => {
     throw new Error("Error creating the user");
   }
 };
+
+export const getUserMe = async (): Promise<TUserBase> => {
+  try {
+    const response = await api.get<TUserBase>("/users/me");
+    return response.data;
+  } catch (error) {
+    throw new Error("Error getting user");
+  }
+};
