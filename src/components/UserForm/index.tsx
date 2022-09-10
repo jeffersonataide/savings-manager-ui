@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useState } from "react";
-import { TUserCreate } from "../../services/api";
+import { TUserCreate } from "../../services/api/users";
 
 interface UserFormParams {
   title: string;

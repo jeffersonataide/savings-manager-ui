@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { createPortfolio, TPortfolioBase } from "../../services/api";
+import { TPortfolioBase, createPortfolio } from "../../services/api/portfolios";
 import { PortfolioForm } from "../PortfolioForm";
 
 export const CreatePortfolioForm = () => {

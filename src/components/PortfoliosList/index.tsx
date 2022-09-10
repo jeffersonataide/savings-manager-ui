@@ -1,5 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { deletePortfolio, fetchPortfolios } from "../../services/api";
+import {
+  deletePortfolio,
+  fetchPortfolios,
+} from "../../services/api/portfolios";
 import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
 import { EditPortfolioForm } from "../EditPortfolioForm";

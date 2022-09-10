@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { createUser, TUserCreate } from "../../services/api";
+import { createUser, TUserCreate } from "../../services/api/users";
 import { UserForm } from "../UserForm";
 
 export const CreateUserForm = () => {

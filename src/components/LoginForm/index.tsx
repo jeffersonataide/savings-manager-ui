@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { login, TUserLogin } from "../../services/api";
+import { login, TUserLogin } from "../../services/api/login";
 import { UserForm } from "../UserForm";
 
 export const LoginForm = () => {

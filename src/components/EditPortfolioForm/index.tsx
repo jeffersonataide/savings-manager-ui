@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
-import { editPortfolio, TPortfolioBase } from "../../services/api";
+import { editPortfolio, TPortfolioBase } from "../../services/api/portfolios";
 import { PortfolioForm } from "../PortfolioForm";
 
 interface EditPortfolioFormParams {

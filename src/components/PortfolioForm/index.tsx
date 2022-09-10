@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useState } from "react";
-import { TPortfolioBase } from "../../services/api";
+import { TPortfolioBase } from "../../services/api/portfolios";
 
 interface PortfolioFormParams {
   title: string;
