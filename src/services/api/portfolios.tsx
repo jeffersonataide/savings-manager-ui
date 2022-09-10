@@ -1,4 +1,4 @@
-import { API_URL } from ".";
+import { api } from ".";
 
 export interface TPortfolioBase {
   name: string;
@@ -13,13 +13,12 @@ export interface TPortfolios {
 }
 
 export const fetchPortfolios = async (): Promise<TPortfolios> => {
-  const response = await fetch(`${API_URL}/portfolios`);
-
-  if (!response.ok) {
+  try {
+    const response = await api.get<TPortfolios>("/portfolios/");
+    return response.data;
+  } catch (error) {
     throw new Error("Error fetching portfolios");
   }
-
-  return response.json();
 };
 
 export interface TPortfolioCreate extends TPortfolioBase {}
@@ -27,19 +26,12 @@ export interface TPortfolioCreate extends TPortfolioBase {}
 export const createPortfolio = async (
   portfolio: TPortfolioCreate
 ): Promise<TPortfolio> => {
-  const response = await fetch(`${API_URL}/portfolios`, {
-    method: "POST",
-    body: JSON.stringify(portfolio),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
+  try {
+    const response = await api.post<TPortfolio>("/portfolios/", portfolio);
+    return response.data;
+  } catch (error) {
     throw new Error("Error creating the portfolio");
   }
-
-  return response.json();
 };
 
 interface EditPortfolioParams {
@@ -51,29 +43,19 @@ export const editPortfolio = async ({
   id,
   portfolio,
 }: EditPortfolioParams): Promise<TPortfolio> => {
-  const response = await fetch(`${API_URL}/portfolios/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(portfolio),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
+  try {
+    const response = await api.put<TPortfolio>(`/portfolios/${id}`, portfolio);
+    return response.data;
+  } catch (error) {
     throw new Error("Error editing the portfolio");
   }
-
-  return response.json();
 };
 
 export const deletePortfolio = async (id: string): Promise<TPortfolio> => {
-  const response = await fetch(`${API_URL}/portfolios/${id}`, {
-    method: "DELETE",
-  });
-
-  if (!response.ok) {
+  try {
+    const response = await api.delete<TPortfolio>(`/portfolios/${id}`);
+    return response.data;
+  } catch (error) {
     throw new Error("Error deleting the portfolio");
   }
-
-  return response.json();
 };

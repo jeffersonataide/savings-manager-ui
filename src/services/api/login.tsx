@@ -1,4 +1,4 @@
-import { API_URL } from ".";
+import { api } from ".";
 
 export interface TUserLogin {
   username: string;
@@ -15,14 +15,10 @@ export const login = async (user: TUserLogin): Promise<TLoginToken> => {
   formData.set("username", user.username);
   formData.set("password", user.password);
 
-  const response = await fetch(`${API_URL}/token`, {
-    method: "POST",
-    body: formData,
-  });
-
-  if (!response.ok) {
+  try {
+    const response = await api.post<TLoginToken>(`/token`, formData);
+    return response.data;
+  } catch (error) {
     throw new Error("Error logging in");
   }
-
-  return response.json();
 };

@@ -1,4 +1,4 @@
-import { API_URL } from ".";
+import { api } from ".";
 
 export interface TUserBase {
   username: string;
@@ -9,17 +9,10 @@ export interface TUserCreate extends TUserBase {
 }
 
 export const createUser = async (user: TUserCreate): Promise<TUserBase> => {
-  const response = await fetch(`${API_URL}/users/`, {
-    method: "POST",
-    body: JSON.stringify(user),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
+  try {
+    const response = await api.post<TUserBase>("/users/", user);
+    return response.data;
+  } catch (error) {
     throw new Error("Error creating the user");
   }
-
-  return response.json();
 };
