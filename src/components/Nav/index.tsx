@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useUser } from "../../hooks/user";
+import { useUser } from "../../contexts/userContext";
 
 export const Nav = () => {
-  const { isLogged, handleLogout } = useUser();
+  const userContext = useUser();
 
   const links = [
     { label: "Home", url: "/" },
@@ -23,8 +23,8 @@ export const Nav = () => {
             {link.label}
           </Link>
         ))}
-        {isLogged ? (
-          <button className="mx-2 sm:mx-5" onClick={handleLogout}>
+        {userContext?.isLogged ? (
+          <button className="mx-2 sm:mx-5" onClick={userContext.handleLogout}>
             Logout
           </button>
         ) : (

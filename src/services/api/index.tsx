@@ -6,11 +6,21 @@ const getJWT = () => {
   return localStorage.getItem("jwt");
 };
 
-const jwt = getJWT();
+let jwt = getJWT();
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: API_URL,
-  headers: {
-    Authorization: jwt ? `Bearer ${jwt}` : "",
-  },
 });
+
+api.interceptors.request.use((config) => {
+  jwt = getJWT();
+  if (jwt) {
+    config.headers = {
+      ...config.headers,
+      Authorization: `Bearer ${jwt}`,
+    };
+  }
+  return config;
+});
+
+export { api };
