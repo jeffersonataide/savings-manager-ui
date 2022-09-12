@@ -1,17 +1,13 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import {
-  deletePortfolio,
-  fetchPortfolios,
-} from "../../services/api/portfolios";
+import { useQuery } from "react-query";
+import { fetchPortfolios } from "../../services/api/portfolios";
 import { EditPortfolioForm } from "../EditPortfolioForm";
 import { useModal } from "../../contexts/modalContext";
+import { DeletePortfolioForm } from "../DeletePortfolioForm";
 
 export const PortfoliosList = () => {
-  const queryClient = useQueryClient();
   const query = useQuery("portfolios", fetchPortfolios);
-  const mutation = useMutation(deletePortfolio);
 
   const modalContext = useModal();
 
@@ -23,11 +19,16 @@ export const PortfoliosList = () => {
     return <span>Something went wrong ... {query.error.message}</span>;
   }
 
-  const handleDeletePortfolio = (id: string) => {
-    mutation.mutate(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["portfolios"]);
-      },
+  const handleDeletePortfolio = (portfolioId: string) => {
+    modalContext.openModal({
+      title: "Delete Portfolio",
+      content: (
+        <DeletePortfolioForm
+          portfolioId={portfolioId}
+          onCancel={modalContext.closeModal}
+          onSubmit={modalContext.closeModal}
+        />
+      ),
     });
   };
 
