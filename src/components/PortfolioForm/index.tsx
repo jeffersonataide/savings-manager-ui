@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useState } from "react";
 import { TPortfolioBase } from "../../services/api/portfolios";
+import { Box } from "../Atoms/Box";
 
 interface PortfolioFormParams {
   title: string;
@@ -26,7 +27,7 @@ export const PortfolioForm = ({
   };
 
   return (
-    <div className="border-slate-400 border-2 rounded-lg w-max m-3 p-5 bg-slate-100">
+    <Box>
       <h2 className="font-bold text-center">{title}</h2>
       <div className="my-3">
         <label>Name:</label>
@@ -45,6 +46,6 @@ export const PortfolioForm = ({
           {submitButtonText}
         </button>
       </div>
-    </div>
+    </Box>
   );
 };

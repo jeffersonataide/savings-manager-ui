@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useState } from "react";
 import { TUserCreate } from "../../services/api/users";
+import { Box } from "../Atoms/Box";
 
 interface UserFormParams {
   title: string;
@@ -30,7 +31,7 @@ export const UserForm = ({
   };
 
   return (
-    <div className="border-slate-400 border-2 rounded-lg w-max m-3 p-5 bg-slate-100">
+    <Box>
       <h2 className="font-bold text-center">{title}</h2>
       <div className="my-3">
         <label>Username:</label>
@@ -58,6 +59,6 @@ export const UserForm = ({
           {submitButtonText}
         </button>
       </div>
-    </div>
+    </Box>
   );
 };
