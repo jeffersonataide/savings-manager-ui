@@ -1,15 +1,18 @@
 import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { createUser, TUserCreate } from "../../services/api/users";
 import { UserForm } from "../UserForm";
 
 export const CreateUserForm = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation(createUser);
+  const navigate = useNavigate();
 
   const handleSubmit = (user: TUserCreate) => {
     mutation.mutate(user, {
       onSuccess: () => {
         queryClient.invalidateQueries(["user"]);
+        navigate("/login");
       },
     });
   };
