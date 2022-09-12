@@ -5,7 +5,7 @@ interface BoxProps {
 }
 export const Box: React.FC<BoxProps> = ({ children }) => {
   return (
-    <div className="border-slate-400 border-2 rounded-lg w-max m-3 p-5 bg-slate-100">
+    <div className="border-slate-400 border-2 rounded-lg w-max m-3 p-5 bg-slate-50">
       {children}
     </div>
   );
