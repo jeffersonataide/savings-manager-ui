@@ -25,7 +25,7 @@ export const UserForm = ({
     setUser({ ...user, password: e.target.value });
   };
 
-  const hanldeSubmit = () => {
+  const handleSubmit = () => {
     onSubmit(user);
     setUser(USER_INITIAL);
   };
@@ -54,7 +54,7 @@ export const UserForm = ({
       <div className="flex justify-end">
         <button
           className="bg-white m-3 p-1 px-5 rounded-lg border-cyan-500 border-2"
-          onClick={hanldeSubmit}
+          onClick={handleSubmit}
         >
           {submitButtonText}
         </button>

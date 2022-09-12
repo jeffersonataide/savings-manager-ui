@@ -18,7 +18,7 @@ export const PortfolioForm = ({
     setPortfolio({ ...portfolio, name: e.target.value });
   };
 
-  const hanldeSubmit = () => {
+  const handleSubmit = () => {
     onSubmit(portfolio);
     setPortfolio(PORTFOLIO_INITIAL);
   };
@@ -37,7 +37,7 @@ export const PortfolioForm = ({
       <div className="flex justify-end">
         <button
           className="bg-slate-100 my-3 p-1 px-5 rounded-2xl border-slate-500 border-2"
-          onClick={hanldeSubmit}
+          onClick={handleSubmit}
         >
           {submitButtonText}
         </button>
