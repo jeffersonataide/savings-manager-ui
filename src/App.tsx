@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./components/Router";
+import { ModalProvider } from "./contexts/modalContext";
 import { UserProvider } from "./contexts/userContext";
 
 const queryClient = new QueryClient({
@@ -16,9 +17,11 @@ export default function App() {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <UserProvider>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <ModalProvider>
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </ModalProvider>
         </UserProvider>
       </QueryClientProvider>
     </div>

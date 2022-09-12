@@ -1,20 +1,19 @@
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   deletePortfolio,
   fetchPortfolios,
 } from "../../services/api/portfolios";
-import { v4 as uuidv4 } from "uuid";
-import React, { useState } from "react";
 import { EditPortfolioForm } from "../EditPortfolioForm";
-import { Modal } from "../Atoms/Modal";
+import { useModal } from "../../contexts/modalContext";
 
 export const PortfoliosList = () => {
   const queryClient = useQueryClient();
   const query = useQuery("portfolios", fetchPortfolios);
   const mutation = useMutation(deletePortfolio);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [editPortfolioId, seteditPortfolioId] = useState("");
+  const modalContext = useModal();
 
   if (query.isLoading) {
     return <span>Loading ...</span>;
@@ -32,18 +31,16 @@ export const PortfoliosList = () => {
     });
   };
 
-  const handleEditPortfolio = (id: string) => {
-    seteditPortfolioId(id);
-    openModal();
-  };
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  const closeModal = () => {
-    setIsOpen(false);
-    seteditPortfolioId("");
+  const handleEditPortfolio = (portfolioId: string) => {
+    modalContext.openModal({
+      title: "Edit Portfolio",
+      content: (
+        <EditPortfolioForm
+          id={portfolioId}
+          onSubmit={modalContext.closeModal}
+        />
+      ),
+    });
   };
 
   return (
@@ -55,9 +52,6 @@ export const PortfoliosList = () => {
         </tr>
       </thead>
 
-      <Modal title="Edit Portfolio" isOpen={isOpen} closeModal={closeModal}>
-        <EditPortfolioForm id={editPortfolioId} onSubmit={closeModal} />
-      </Modal>
       <tbody>
         {query.data?.portfolios.map((portfolio) => {
           return (

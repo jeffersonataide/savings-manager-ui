@@ -1,19 +1,16 @@
-import { useState } from "react";
-
-import { Modal } from "../../components/Atoms/Modal";
 import { CreatePortfolioForm } from "../../components/CreatePortfolioForm";
 import { PortfoliosList } from "../../components/PortfoliosList";
+import { useModal } from "../../contexts/modalContext";
 
 export const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const modalContext = useModal();
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const openModal = () => {
+    modalContext.openModal({
+      title: "Create Portfolio",
+      content: <CreatePortfolioForm onSubmit={modalContext.closeModal} />,
+    });
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -26,9 +23,6 @@ export const Home = () => {
           Create portfolio
         </button>
       </div>
-      <Modal title="Create Portfolio" isOpen={isOpen} closeModal={closeModal}>
-        <CreatePortfolioForm onSubmit={closeModal} />
-      </Modal>
       <PortfoliosList />
     </div>
   );
