@@ -1,9 +1,7 @@
 import { ChangeEventHandler, useState } from "react";
 import { TPortfolioBase } from "../../services/api/portfolios";
-import { Box } from "../Atoms/Box";
 
 interface PortfolioFormParams {
-  title: string;
   submitButtonText: string;
   onSubmit: (portfolio: TPortfolioBase) => void;
 }
@@ -11,7 +9,6 @@ interface PortfolioFormParams {
 const PORTFOLIO_INITIAL = { name: "" };
 
 export const PortfolioForm = ({
-  title,
   submitButtonText,
   onSubmit,
 }: PortfolioFormParams) => {
@@ -27,12 +24,11 @@ export const PortfolioForm = ({
   };
 
   return (
-    <Box>
-      <h2 className="font-bold text-center">{title}</h2>
-      <div className="my-3">
+    <div>
+      <div className="my-3 flex items-center">
         <label>Name:</label>
         <input
-          className="rounded-lg ml-3 p-2 border-slate-400 border-2"
+          className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
           type="text"
           value={portfolio.name}
           onChange={onNameChange}
@@ -40,12 +36,12 @@ export const PortfolioForm = ({
       </div>
       <div className="flex justify-end">
         <button
-          className="bg-white m-3 p-1 px-5 rounded-lg border-cyan-500 border-2"
+          className="bg-slate-100 my-3 p-1 px-5 rounded-2xl border-slate-500 border-2"
           onClick={hanldeSubmit}
         >
           {submitButtonText}
         </button>
       </div>
-    </Box>
+    </div>
   );
 };

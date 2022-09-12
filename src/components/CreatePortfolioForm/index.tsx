@@ -1,8 +1,15 @@
+import React from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { TPortfolioBase, createPortfolio } from "../../services/api/portfolios";
 import { PortfolioForm } from "../PortfolioForm";
 
-export const CreatePortfolioForm = () => {
+interface CreatePortfolioFormParams {
+  onSubmit?: () => void;
+}
+
+export const CreatePortfolioForm: React.FC<CreatePortfolioFormParams> = ({
+  onSubmit = () => {},
+}) => {
   const queryClient = useQueryClient();
   const mutation = useMutation(createPortfolio);
 
@@ -10,15 +17,10 @@ export const CreatePortfolioForm = () => {
     mutation.mutate(portfolio, {
       onSuccess: () => {
         queryClient.invalidateQueries(["portfolios"]);
+        onSubmit();
       },
     });
   };
 
-  return (
-    <PortfolioForm
-      title={"Create Portfolio"}
-      submitButtonText={"Create"}
-      onSubmit={handleSubmit}
-    />
-  );
+  return <PortfolioForm submitButtonText={"Create"} onSubmit={handleSubmit} />;
 };

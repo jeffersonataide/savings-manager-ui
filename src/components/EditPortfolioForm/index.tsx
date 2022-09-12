@@ -28,11 +28,5 @@ export const EditPortfolioForm = ({
     );
   };
 
-  return (
-    <PortfolioForm
-      title={"Edit Portfolio"}
-      submitButtonText={"Edit"}
-      onSubmit={handleSubmit}
-    />
-  );
+  return <PortfolioForm submitButtonText={"Edit"} onSubmit={handleSubmit} />;
 };
