@@ -6,12 +6,14 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
 import { EditPortfolioForm } from "../EditPortfolioForm";
+import { Modal } from "../Atoms/Modal";
 
 export const PortfoliosList = () => {
   const queryClient = useQueryClient();
   const query = useQuery("portfolios", fetchPortfolios);
   const mutation = useMutation(deletePortfolio);
 
+  const [isOpen, setIsOpen] = useState(false);
   const [editPortfolioId, seteditPortfolioId] = useState("");
 
   if (query.isLoading) {
@@ -32,9 +34,15 @@ export const PortfoliosList = () => {
 
   const handleEditPortfolio = (id: string) => {
     seteditPortfolioId(id);
+    openModal();
   };
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
   const closeModal = () => {
+    setIsOpen(false);
     seteditPortfolioId("");
   };
 
@@ -46,15 +54,14 @@ export const PortfoliosList = () => {
           <th className="p-3 uppercase text-left"></th>
         </tr>
       </thead>
+
+      <Modal title="Edit Portfolio" isOpen={isOpen} closeModal={closeModal}>
+        <EditPortfolioForm id={editPortfolioId} onSubmit={closeModal} />
+      </Modal>
       <tbody>
         {query.data?.portfolios.map((portfolio) => {
           return (
             <React.Fragment key={uuidv4()}>
-              {portfolio.id === editPortfolioId ? (
-                <div className="flex justify-center">
-                  <EditPortfolioForm id={portfolio.id} onSubmit={closeModal} />
-                </div>
-              ) : null}
               <tr className="bg-slate-600 text-white">
                 <td className="p-3">{portfolio.name}</td>
                 <td className="text-center space-x-3">
