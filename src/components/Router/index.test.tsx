@@ -4,9 +4,9 @@ import { Router } from "./";
 
 test("renders assets page", () => {
   renderWithRouter(<Router />, {
-    route: "/assets",
+    route: "/",
   });
 
-  const assetsPageTest = screen.getByText(/assets page/i);
-  expect(assetsPageTest).toBeInTheDocument();
+  const portfoliosPageTest = screen.getByText(/create an account/i);
+  expect(portfoliosPageTest).toBeInTheDocument();
 });

@@ -5,6 +5,7 @@ import { fetchPortfolios } from "../../services/api/portfolios";
 import { EditPortfolioForm } from "../EditPortfolioForm";
 import { useModal } from "../../contexts/modalContext";
 import { DeletePortfolioForm } from "../DeletePortfolioForm";
+import { Link } from "react-router-dom";
 
 export const PortfoliosList = () => {
   const query = useQuery("portfolios", fetchPortfolios);
@@ -58,7 +59,14 @@ export const PortfoliosList = () => {
           return (
             <React.Fragment key={uuidv4()}>
               <tr className="bg-slate-600 text-white">
-                <td className="p-3">{portfolio.name}</td>
+                <td className="p-3">
+                  <Link
+                    to={`/portfolio/${portfolio.id}`}
+                    className="block w-full"
+                  >
+                    {portfolio.name}
+                  </Link>
+                </td>
                 <td className="text-center space-x-3">
                   <button onClick={() => handleEditPortfolio(portfolio.id)}>
                     <svg

@@ -3,10 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "../../contexts/userContext";
 
 const openLinks = [{ label: "Home", url: "/" }];
-const closedLinks = [
-  { label: "Assets", url: "/assets" },
-  { label: "Portfolio", url: "/portfolio" },
-];
+const closedLinks = [{ label: "Portfolio", url: "/portfolio" }];
 
 export const Nav = () => {
   const userContext = useUser();

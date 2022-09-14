@@ -21,6 +21,23 @@ export const fetchPortfolios = async (): Promise<TPortfolios> => {
   }
 };
 
+interface TPortfolioFetchResponse {
+  portfolio: TPortfolio;
+}
+
+export const fetchPortfolio = async (
+  id: string
+): Promise<TPortfolioFetchResponse> => {
+  try {
+    const response = await api.get<TPortfolioFetchResponse>(
+      `/portfolios/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching portfolio");
+  }
+};
+
 export interface TPortfolioCreate extends TPortfolioBase {}
 
 export const createPortfolio = async (
