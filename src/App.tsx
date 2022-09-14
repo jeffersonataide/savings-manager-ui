@@ -16,13 +16,13 @@ export default function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <UserProvider>
-          <ModalProvider>
-            <BrowserRouter>
+        <BrowserRouter>
+          <UserProvider>
+            <ModalProvider>
               <Router />
-            </BrowserRouter>
-          </ModalProvider>
-        </UserProvider>
+            </ModalProvider>
+          </UserProvider>
+        </BrowserRouter>
       </QueryClientProvider>
     </div>
   );

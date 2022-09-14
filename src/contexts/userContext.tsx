@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUserMe, TUserBase } from "../services/api/users";
 
 interface TUserContext {
@@ -24,6 +25,7 @@ interface UserProviderProps {
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [user, setUser] = useState<TUserBase>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -51,6 +53,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setIsLogged(false);
+    navigate("/");
   };
 
   const onLogin = (jwt: string) => {
