@@ -1,7 +1,16 @@
+import { PortfoliosList } from "../../components/PortfoliosList";
+import { useUser } from "../../contexts/userContext";
+
 export const Home = () => {
+  const userContext = useUser();
+
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-lg">Create an account to use the application</h1>
+      {userContext?.isLogged ? (
+        <PortfoliosList />
+      ) : (
+        <h1 className="text-lg">Create an account to use the application</h1>
+      )}
     </div>
   );
 };
