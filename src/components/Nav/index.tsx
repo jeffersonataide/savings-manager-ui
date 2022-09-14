@@ -2,14 +2,20 @@ import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "../../contexts/userContext";
 
+const openLinks = [{ label: "Home", url: "/" }];
+const closedLinks = [
+  { label: "Assets", url: "/assets" },
+  { label: "Portfolio", url: "/portfolio" },
+];
+
 export const Nav = () => {
   const userContext = useUser();
 
-  const links = [
-    { label: "Home", url: "/" },
-    { label: "Assets", url: "/assets" },
-    { label: "Portfolio", url: "/portfolio" },
-  ];
+  let links = openLinks;
+
+  if (userContext?.isLogged) {
+    links = [...links, ...closedLinks];
+  }
 
   return (
     <div className="bg-slate-100 text-slate-700 font-mono h-14 flex items-center justify-between px-5">
