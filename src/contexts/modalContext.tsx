@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { Modal } from "../components/Atoms/Modal";
 
-interface TModalProperties {
+export interface TModalProperties {
   title: string;
   content: React.ReactNode;
 }
