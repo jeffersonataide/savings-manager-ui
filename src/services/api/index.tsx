@@ -1,19 +1,16 @@
 import axios from "axios";
+import { getLocalJWT, removeLocalJWT } from "../../utils/localStorage";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const getJWT = () => {
-  return localStorage.getItem("jwt");
-};
-
-let jwt = getJWT();
+let jwt = getLocalJWT();
 
 const api = axios.create({
   baseURL: API_URL,
 });
 
 api.interceptors.request.use((config) => {
-  jwt = getJWT();
+  jwt = getLocalJWT();
   if (jwt) {
     config.headers = {
       ...config.headers,
@@ -22,5 +19,16 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      removeLocalJWT();
+    }
+  }
+);
 
 export { api };

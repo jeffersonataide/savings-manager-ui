@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserMe, TUserBase } from "../services/api/users";
+import {
+  getLocalJWT,
+  removeLocalJWT,
+  setLocalJWT,
+} from "../utils/localStorage";
 
 interface TUserContext {
   isLogged: boolean;
@@ -28,7 +33,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
+    const jwt = getLocalJWT();
 
     if (jwt) {
       setIsLogged(true);
@@ -51,13 +56,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   }, [isLogged]);
 
   const handleLogout = () => {
-    localStorage.removeItem("jwt");
+    removeLocalJWT();
     setIsLogged(false);
     navigate("/");
   };
 
   const onLogin = (jwt: string) => {
-    localStorage.setItem("jwt", jwt);
+    setLocalJWT(jwt);
     setIsLogged(true);
   };
 
