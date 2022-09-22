@@ -46,7 +46,7 @@ export const UserForm = ({
         <label>Password:</label>
         <input
           className="rounded-lg ml-3 p-2 border-slate-400 border-2"
-          type="text"
+          type="password"
           value={user.password}
           onChange={onPasswordChange}
         />
