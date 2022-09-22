@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { AssetDetails } from "../../page/AssetDetails";
 import { CreateAccount } from "../../page/CreateAccount";
 import { Home } from "../../page/Home";
 import { Login } from "../../page/Login";
@@ -15,6 +16,7 @@ export const Router = () => {
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/portfolio" element={<Portfolios />} />
         <Route path="/portfolio/:portfolioId" element={<PortfolioDetails />} />
+        <Route path="/asset/:assetId" element={<AssetDetails />} />
       </Routes>
     </Layout>
   );
