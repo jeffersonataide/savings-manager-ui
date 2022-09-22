@@ -2,6 +2,7 @@ import { ChangeEventHandler, useState } from "react";
 import { TPortfolioBase } from "../../services/api/portfolios";
 
 interface PortfolioFormParams {
+  initialData?: TPortfolioBase;
   submitButtonText: string;
   onSubmit: (portfolio: TPortfolioBase) => void;
 }
@@ -9,10 +10,11 @@ interface PortfolioFormParams {
 const PORTFOLIO_INITIAL = { name: "" };
 
 export const PortfolioForm = ({
+  initialData = PORTFOLIO_INITIAL,
   submitButtonText,
   onSubmit,
 }: PortfolioFormParams) => {
-  const [portfolio, setPortfolio] = useState<TPortfolioBase>(PORTFOLIO_INITIAL);
+  const [portfolio, setPortfolio] = useState<TPortfolioBase>(initialData);
 
   const onNameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setPortfolio({ ...portfolio, name: e.target.value });
@@ -20,7 +22,7 @@ export const PortfolioForm = ({
 
   const handleSubmit = () => {
     onSubmit(portfolio);
-    setPortfolio(PORTFOLIO_INITIAL);
+    setPortfolio(initialData);
   };
 
   return (

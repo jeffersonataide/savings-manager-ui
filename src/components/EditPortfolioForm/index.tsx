@@ -1,22 +1,26 @@
 import { useMutation, useQueryClient } from "react-query";
-import { editPortfolio, TPortfolioBase } from "../../services/api/portfolios";
+import {
+  editPortfolio,
+  TPortfolio,
+  TPortfolioBase,
+} from "../../services/api/portfolios";
 import { PortfolioForm } from "../PortfolioForm";
 
 interface EditPortfolioFormParams {
-  id: string;
+  portfolio: TPortfolio;
   onSubmit: () => void;
 }
 
 export const EditPortfolioForm = ({
-  id,
+  portfolio,
   onSubmit,
 }: EditPortfolioFormParams) => {
   const queryClient = useQueryClient();
   const mutation = useMutation(editPortfolio);
 
-  const handleSubmit = (portfolio: TPortfolioBase) => {
+  const handleSubmit = (portfolioUpdate: TPortfolioBase) => {
     mutation.mutate(
-      { id, portfolio },
+      { id: portfolio.id, portfolio: portfolioUpdate },
       {
         onSuccess: () => {
           queryClient.invalidateQueries(["portfolios"]);
@@ -28,5 +32,11 @@ export const EditPortfolioForm = ({
     );
   };
 
-  return <PortfolioForm submitButtonText={"Edit"} onSubmit={handleSubmit} />;
+  return (
+    <PortfolioForm
+      initialData={portfolio}
+      submitButtonText={"Edit"}
+      onSubmit={handleSubmit}
+    />
+  );
 };

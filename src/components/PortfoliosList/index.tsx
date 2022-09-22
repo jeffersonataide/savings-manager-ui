@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useQuery } from "react-query";
-import { fetchPortfolios } from "../../services/api/portfolios";
+import { fetchPortfolios, TPortfolio } from "../../services/api/portfolios";
 import { EditPortfolioForm } from "../EditPortfolioForm";
 import { useModal } from "../../contexts/modalContext";
 import { DeletePortfolioForm } from "../DeletePortfolioForm";
@@ -33,12 +33,12 @@ export const PortfoliosList = () => {
     });
   };
 
-  const handleEditPortfolio = (portfolioId: string) => {
+  const handleEditPortfolio = (portfolio: TPortfolio) => {
     modalContext.openModal({
       title: "Edit Portfolio",
       content: (
         <EditPortfolioForm
-          id={portfolioId}
+          portfolio={portfolio}
           onSubmit={modalContext.closeModal}
         />
       ),
@@ -68,7 +68,7 @@ export const PortfoliosList = () => {
                   </Link>
                 </td>
                 <td className="text-center space-x-3">
-                  <button onClick={() => handleEditPortfolio(portfolio.id)}>
+                  <button onClick={() => handleEditPortfolio(portfolio)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
