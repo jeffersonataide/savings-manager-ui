@@ -55,7 +55,7 @@ export const PortfoliosList = () => {
       </thead>
 
       <tbody>
-        {query.data?.portfolios.map((portfolio) => {
+        {query.data?.map((portfolio) => {
           return (
             <React.Fragment key={uuidv4()}>
               <tr className="bg-slate-600 text-white">

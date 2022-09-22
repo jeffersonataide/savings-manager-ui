@@ -8,13 +8,9 @@ export interface TPortfolio extends TPortfolioBase {
   id: string;
 }
 
-export interface TPortfolios {
-  portfolios: TPortfolio[];
-}
-
-export const fetchPortfolios = async (): Promise<TPortfolios> => {
+export const fetchPortfolios = async (): Promise<TPortfolio[]> => {
   try {
-    const response = await api.get<TPortfolios>("/portfolios/");
+    const response = await api.get<TPortfolio[]>("/portfolios/");
     return response.data;
   } catch (error) {
     throw new Error("Error fetching portfolios");
