@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { Modal } from "../components/Atoms/Modal";
+import { Modal } from "../components/Atomic/Atoms/Modal";
 
 export interface TModalProperties {
   title: string;

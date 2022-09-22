@@ -1,5 +1,5 @@
 import { CreatePortfolioForm } from "../../components/CreatePortfolioForm";
-import { CreateItemModal } from "../../components/Molecules/CreateItemModal";
+import { CreateItemModal } from "../../components/Atomic/Molecules/CreateItemModal";
 import { PortfoliosList } from "../../components/PortfoliosList";
 import { useModal } from "../../contexts/modalContext";
 
