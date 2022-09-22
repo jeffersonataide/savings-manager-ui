@@ -19,7 +19,7 @@ export const PortfolioDetails = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl m-4">{query.data?.portfolio.name}</h1>
+      <h1 className="text-center text-3xl m-4">{query.data?.name}</h1>
     </div>
   );
 };
