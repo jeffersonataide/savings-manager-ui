@@ -1,14 +1,9 @@
 import { useMutation, useQueryClient } from "react-query";
-import { editAsset, TAssetBase } from "../../services/api/assets";
-import {
-  editPortfolio,
-  TPortfolio,
-  TPortfolioBase,
-} from "../../services/api/portfolios";
+import { editAsset, TAsset, TAssetBase } from "../../services/api/assets";
 import { AssetForm } from "../AssetForm";
 
 interface EditAssetFormParams {
-  asset: TPortfolio;
+  asset: TAsset;
   onSubmit: () => void;
 }
 

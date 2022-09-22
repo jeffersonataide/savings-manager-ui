@@ -5,3 +5,4 @@ npx pretty-quick --staged
 npx prettier --check .
 npx lint-staged
 CI=true yarn test
+CI=true yarn build
