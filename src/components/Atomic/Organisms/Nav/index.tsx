@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useUser } from "../../contexts/userContext";
+import { useUser } from "../../../../contexts/userContext";
 
 const openLinks = [{ label: "Home", url: "/" }];
 const closedLinks = [{ label: "Portfolios", url: "/portfolio" }];
