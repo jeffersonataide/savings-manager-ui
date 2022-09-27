@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useState } from "react";
-import { TAssetBase } from "../../services/api/assets";
+import { TAssetBase } from "../../../../services/api/assets";
 
 interface AssetFormParams {
   initialData?: TAssetBase;
