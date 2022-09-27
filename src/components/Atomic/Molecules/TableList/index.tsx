@@ -10,7 +10,7 @@ interface TableColumn {
 export type TableRow = TableColumn[];
 
 interface TableListProps {
-  headers: string[];
+  headers: (string | React.ReactElement | number)[];
   rows: TableRow[];
 }
 

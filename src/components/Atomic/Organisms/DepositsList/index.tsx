@@ -7,6 +7,8 @@ import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
 import { DeleteDepositForm } from "../DeleteDepositForm";
 import { EditDepositForm } from "../EditDepositForm";
 import { sortByDate } from "utils/sorting";
+import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
+import { CreateDepositForm } from "../CreateDepositForm";
 
 interface DepositsListParams {
   assetId: string;
@@ -50,7 +52,23 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
     });
   };
 
-  const headers = ["Date", "Description", "Amount", ""];
+  const headers = [
+    "Date",
+    "Description",
+    "Amount",
+    <CreateItemModal
+      buttonText="Add"
+      modalProperties={{
+        title: "Create deposit",
+        content: (
+          <CreateDepositForm
+            onSubmit={modalContext.closeModal}
+            assetId={assetId}
+          />
+        ),
+      }}
+    />,
+  ];
 
   const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
     return [

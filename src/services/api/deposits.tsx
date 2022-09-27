@@ -22,6 +22,28 @@ export const fetchDeposits = async (assetId: string): Promise<TDeposit[]> => {
   }
 };
 
+export interface TDepositCreate extends TDepositBase {}
+
+interface CreateDepositParams {
+  assetId: string;
+  deposit: TDepositCreate;
+}
+
+export const createDeposit = async ({
+  deposit,
+  assetId,
+}: CreateDepositParams): Promise<TDeposit> => {
+  try {
+    const response = await api.post<TDeposit>("/deposits/", {
+      ...deposit,
+      asset_id: assetId,
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("Error creating the deposit");
+  }
+};
+
 interface EditDepositParams {
   id: string;
   deposit: TDepositBase;
