@@ -5,7 +5,7 @@ import { Home } from "page/Home";
 import { Login } from "page/Login";
 import { PortfolioDetails } from "page/PortfolioDetails";
 import { Portfolios } from "page/Portfolios";
-import { Layout } from "../Atomic/Templates/Layout";
+import { Layout } from "components/Atomic/Templates/Layout";
 
 export const Router = () => {
   return (

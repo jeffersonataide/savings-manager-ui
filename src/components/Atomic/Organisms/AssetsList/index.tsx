@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useModal } from "contexts/modalContext";
 import { fetchAssets, TAsset } from "services/api/assets";
 import { DeleteAssetForm } from "components/Atomic/Organisms/DeleteAssetForm";
-import { EditAssetForm } from "../EditAssetForm";
+import { EditAssetForm } from "components/Atomic/Organisms/EditAssetForm";
 
 interface AssetsListParams {
   portfolioId: string;

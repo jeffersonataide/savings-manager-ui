@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useState } from "react";
 import { TUserCreate } from "services/api/users";
-import { Box } from "../../Atoms/Box";
+import { Box } from "components/Atomic/Atoms/Box";
 
 interface UserFormParams {
   title: string;
