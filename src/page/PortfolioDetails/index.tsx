@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchPortfolio } from "../../services/api/portfolios";
 import { CreateItemModal } from "../../components/Atomic/Molecules/CreateItemModal";
 import { useModal } from "../../contexts/modalContext";
-import { CreateAssetForm } from "../../components/CreateAssetForm";
+import { CreateAssetForm } from "../../components/Atomic/Organisms/CreateAssetForm";
 import { AssetsList } from "../../components/AssetsList";
 
 export const PortfolioDetails = () => {

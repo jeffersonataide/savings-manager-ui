@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { createAsset, TAssetBase } from "../../services/api/assets";
-import { AssetForm } from "../Atomic/Molecules/AssetForm";
+import { createAsset, TAssetBase } from "../../../../services/api/assets";
+import { AssetForm } from "../../../Atomic/Molecules/AssetForm";
 
 interface CreateAssetFormParams {
   portfolioId: string;
