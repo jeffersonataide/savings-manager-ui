@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { createUser, TUserCreate } from "../../services/api/users";
-import { UserForm } from "../UserForm";
+import { UserForm } from "../Atomic/Molecules/UserForm";
 
 export const CreateUserForm = () => {
   const queryClient = useQueryClient();

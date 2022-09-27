@@ -4,7 +4,7 @@ import {
   TPortfolio,
   TPortfolioBase,
 } from "../../services/api/portfolios";
-import { PortfolioForm } from "../PortfolioForm";
+import { PortfolioForm } from "../Atomic/Molecules/PortfolioForm";
 
 interface EditPortfolioFormParams {
   portfolio: TPortfolio;
