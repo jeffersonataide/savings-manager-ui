@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { editAsset, TAsset, TAssetBase } from "../../services/api/assets";
-import { AssetForm } from "../Atomic/Molecules/AssetForm";
+import { editAsset, TAsset, TAssetBase } from "services/api/assets";
+import { AssetForm } from "components/Atomic/Molecules/AssetForm";
 
 interface EditAssetFormParams {
   asset: TAsset;
