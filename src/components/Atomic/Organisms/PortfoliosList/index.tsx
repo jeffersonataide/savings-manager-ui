@@ -1,10 +1,13 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useQuery } from "react-query";
-import { fetchPortfolios, TPortfolio } from "../../services/api/portfolios";
-import { EditPortfolioForm } from "../EditPortfolioForm";
-import { useModal } from "../../contexts/modalContext";
-import { DeletePortfolioForm } from "../DeletePortfolioForm";
+import {
+  fetchPortfolios,
+  TPortfolio,
+} from "../../../../services/api/portfolios";
+import { EditPortfolioForm } from "../../../EditPortfolioForm";
+import { useModal } from "../../../../contexts/modalContext";
+import { DeletePortfolioForm } from "../../../DeletePortfolioForm";
 import { Link } from "react-router-dom";
 
 export const PortfoliosList = () => {

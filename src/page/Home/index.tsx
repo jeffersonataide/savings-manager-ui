@@ -1,4 +1,4 @@
-import { PortfoliosList } from "../../components/PortfoliosList";
+import { PortfoliosList } from "../../components/Atomic/Organisms/PortfoliosList";
 import { useUser } from "../../contexts/userContext";
 
 export const Home = () => {
