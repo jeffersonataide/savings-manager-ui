@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithRouter } from "../../tests";
+import { renderWithRouter } from "tests";
 import { Router } from "./";
 
 test("renders assets page", () => {
