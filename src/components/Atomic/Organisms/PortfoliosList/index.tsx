@@ -7,7 +7,7 @@ import {
 } from "../../../../services/api/portfolios";
 import { EditPortfolioForm } from "../../../EditPortfolioForm";
 import { useModal } from "../../../../contexts/modalContext";
-import { DeletePortfolioForm } from "../../../DeletePortfolioForm";
+import { DeletePortfolioForm } from "../DeletePortfolioForm";
 import { Link } from "react-router-dom";
 
 export const PortfoliosList = () => {

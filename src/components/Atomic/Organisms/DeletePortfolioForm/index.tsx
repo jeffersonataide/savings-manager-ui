@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { deletePortfolio } from "../../services/api/portfolios";
-import { DeleteItemForm } from "../Atomic/Molecules/DeleteItemForm";
+import { deletePortfolio } from "services/api/portfolios";
+import { DeleteItemForm } from "components/Atomic/Molecules/DeleteItemForm";
 
 interface DeletePortfolioFormParams {
   portfolioId: string;
