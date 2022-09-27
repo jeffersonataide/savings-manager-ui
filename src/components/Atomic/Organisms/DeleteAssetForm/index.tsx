@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { deleteAsset } from "../../services/api/assets";
-import { DeleteItemForm } from "../Atomic/Molecules/DeleteItemForm";
+import { deleteAsset } from "services/api/assets";
+import { DeleteItemForm } from "components/Atomic/Molecules/DeleteItemForm";
 
 interface DeleteAssetFormParams {
   assetId: string;
