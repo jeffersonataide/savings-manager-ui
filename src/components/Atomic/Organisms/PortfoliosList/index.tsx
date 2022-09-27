@@ -5,7 +5,7 @@ import {
   fetchPortfolios,
   TPortfolio,
 } from "../../../../services/api/portfolios";
-import { EditPortfolioForm } from "../../../EditPortfolioForm";
+import { EditPortfolioForm } from "../EditPortfolioForm";
 import { useModal } from "../../../../contexts/modalContext";
 import { DeletePortfolioForm } from "../DeletePortfolioForm";
 import { Link } from "react-router-dom";
