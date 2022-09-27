@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../../contexts/userContext";
-import { login, TUserLogin } from "../../../../services/api/login";
+import { login, TUserLogin } from "services/api/login";
 import { UserForm } from "../../Molecules/UserForm";
 
 export const LoginForm = () => {

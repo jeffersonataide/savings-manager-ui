@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetchAsset } from "../../services/api/assets";
+import { fetchAsset } from "services/api/assets";
 
 export const AssetDetails = () => {
   const { assetId } = useParams();
