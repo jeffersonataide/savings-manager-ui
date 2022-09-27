@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LoginForm } from "../../components/Atomic/Organisms/LoginForm";
+import { LoginForm } from "components/Atomic/Organisms/LoginForm";
 
 export const Login = () => {
   return (

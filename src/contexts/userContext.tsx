@@ -1,11 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserMe, TUserBase } from "services/api/users";
-import {
-  getLocalJWT,
-  removeLocalJWT,
-  setLocalJWT,
-} from "../utils/localStorage";
+import { getLocalJWT, removeLocalJWT, setLocalJWT } from "utils/localStorage";
 
 interface TUserContext {
   isLogged: boolean;

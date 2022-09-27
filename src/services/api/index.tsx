@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getLocalJWT, removeLocalJWT } from "../../utils/localStorage";
+import { getLocalJWT, removeLocalJWT } from "utils/localStorage";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
