@@ -1,6 +1,12 @@
 import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 import { useQuery } from "react-query";
-import { fetchDeposits } from "services/api/deposits";
+import { fetchDeposits, TDeposit } from "services/api/deposits";
+import { useModal } from "contexts/modalContext";
+import { EditIcon } from "components/Atomic/Atoms/EditIcon";
+import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
+import { DeleteDepositForm } from "../DeleteDepositForm";
+import { EditDepositForm } from "../EditDepositForm";
+import { sortByDate } from "utils/sorting";
 
 interface DepositsListParams {
   assetId: string;
@@ -8,6 +14,7 @@ interface DepositsListParams {
 
 export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   const query = useQuery("deposits", () => fetchDeposits(assetId));
+  const modalContext = useModal();
 
   if (query.isLoading) {
     return <span>Loading ...</span>;
@@ -21,9 +28,31 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
     return null;
   }
 
-  const headers = ["Date", "Description", "Amount"];
+  const handleDeleteDeposit = (depositId: string) => {
+    modalContext.openModal({
+      title: "Delete Deposit",
+      content: (
+        <DeleteDepositForm
+          depositId={depositId}
+          onCancel={modalContext.closeModal}
+          onSubmit={modalContext.closeModal}
+        />
+      ),
+    });
+  };
 
-  const rows: TableRow[] = query.data.map((deposit) => {
+  const handleEditDeposit = (deposit: TDeposit) => {
+    modalContext.openModal({
+      title: "Edit Deposit",
+      content: (
+        <EditDepositForm deposit={deposit} onSubmit={modalContext.closeModal} />
+      ),
+    });
+  };
+
+  const headers = ["Date", "Description", "Amount", ""];
+
+  const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
     return [
       {
         content: deposit.date,
@@ -33,6 +62,19 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
       },
       {
         content: deposit.amount,
+      },
+      {
+        className: "text-center space-x-3",
+        content: (
+          <>
+            <button onClick={() => handleEditDeposit(deposit)}>
+              <EditIcon />
+            </button>
+            <button onClick={() => handleDeleteDeposit(deposit.id)}>
+              <TrashIcon />
+            </button>
+          </>
+        ),
       },
     ];
   });
