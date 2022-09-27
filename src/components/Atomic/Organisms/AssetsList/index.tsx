@@ -2,7 +2,7 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useModal } from "../../../../contexts/modalContext";
+import { useModal } from "contexts/modalContext";
 import { fetchAssets, TAsset } from "services/api/assets";
 import { DeleteAssetForm } from "components/Atomic/Organisms/DeleteAssetForm";
 import { EditAssetForm } from "../EditAssetForm";

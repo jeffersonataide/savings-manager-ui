@@ -1,7 +1,7 @@
 import { CreatePortfolioForm } from "../../components/Atomic/Organisms/CreatePortfolioForm";
 import { CreateItemModal } from "../../components/Atomic/Molecules/CreateItemModal";
 import { PortfoliosList } from "../../components/Atomic/Organisms/PortfoliosList";
-import { useModal } from "../../contexts/modalContext";
+import { useModal } from "contexts/modalContext";
 
 export const Portfolios = () => {
   const modalContext = useModal();

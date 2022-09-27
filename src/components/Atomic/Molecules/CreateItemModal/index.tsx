@@ -1,4 +1,4 @@
-import { TModalProperties, useModal } from "../../../../contexts/modalContext";
+import { TModalProperties, useModal } from "contexts/modalContext";
 
 interface CreateItemModalProps {
   buttonText: string;

@@ -1,5 +1,5 @@
 import { PortfoliosList } from "../../components/Atomic/Organisms/PortfoliosList";
-import { useUser } from "../../contexts/userContext";
+import { useUser } from "contexts/userContext";
 
 export const Home = () => {
   const userContext = useUser();
