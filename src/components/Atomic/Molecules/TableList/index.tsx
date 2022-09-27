@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 interface TableColumn {
   className?: string;
-  content: React.ReactElement | string;
+  content: React.ReactElement | string | number;
 }
 
 export type TableRow = TableColumn[];
