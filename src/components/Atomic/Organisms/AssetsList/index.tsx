@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { useModal } from "contexts/modalContext";
@@ -8,6 +7,7 @@ import { DeleteAssetForm } from "components/Atomic/Organisms/DeleteAssetForm";
 import { EditAssetForm } from "components/Atomic/Organisms/EditAssetForm";
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
+import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 
 interface AssetsListParams {
   portfolioId: string;
@@ -48,38 +48,36 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
     });
   };
 
-  return (
-    <table className="border-separate border-spacing-y-2 text-2xl w-full">
-      <thead>
-        <tr className="bg-emerald-300 text-white">
-          <th className="p-3 uppercase text-left">Name</th>
-          <th className="p-3 uppercase text-left"></th>
-        </tr>
-      </thead>
+  if (!query.data) {
+    return null;
+  }
 
-      <tbody>
-        {query.data?.map((asset) => {
-          return (
-            <React.Fragment key={uuidv4()}>
-              <tr className="bg-slate-600 text-white">
-                <td className="p-3">
-                  <Link to={`/asset/${asset.id}`} className="block w-full">
-                    {asset.name}
-                  </Link>
-                </td>
-                <td className="text-center space-x-3">
-                  <button onClick={() => handleEditAsset(asset)}>
-                    <EditIcon />
-                  </button>
-                  <button onClick={() => handleDeleteAsset(asset.id)}>
-                    <TrashIcon />
-                  </button>
-                </td>
-              </tr>
-            </React.Fragment>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+  const headers = ["Name", ""];
+
+  const rows: TableRow[] = query.data.map((asset) => {
+    return [
+      {
+        content: (
+          <Link to={`/asset/${asset.id}`} className="block w-full">
+            {asset.name}
+          </Link>
+        ),
+      },
+      {
+        className: "text-center space-x-3",
+        content: (
+          <>
+            <button onClick={() => handleEditAsset(asset)}>
+              <EditIcon />
+            </button>
+            <button onClick={() => handleDeleteAsset(asset.id)}>
+              <TrashIcon />
+            </button>
+          </>
+        ),
+      },
+    ];
+  });
+
+  return <TableList headers={headers} rows={rows} />;
 };

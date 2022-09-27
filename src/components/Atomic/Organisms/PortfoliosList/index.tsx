@@ -1,5 +1,3 @@
-import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import { useQuery } from "react-query";
 import { fetchPortfolios, TPortfolio } from "services/api/portfolios";
 import { EditPortfolioForm } from "components/Atomic/Organisms/EditPortfolioForm";
@@ -8,6 +6,7 @@ import { DeletePortfolioForm } from "components/Atomic/Organisms/DeletePortfolio
 import { Link } from "react-router-dom";
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
+import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 
 export const PortfoliosList = () => {
   const query = useQuery("portfolios", fetchPortfolios);
@@ -47,41 +46,36 @@ export const PortfoliosList = () => {
     });
   };
 
-  return (
-    <table className="border-separate border-spacing-y-2 text-2xl w-full">
-      <thead>
-        <tr className="bg-emerald-300 text-white">
-          <th className="p-3 uppercase text-left">Name</th>
-          <th className="p-3 uppercase text-left"></th>
-        </tr>
-      </thead>
+  if (!query.data) {
+    return null;
+  }
 
-      <tbody>
-        {query.data?.map((portfolio) => {
-          return (
-            <React.Fragment key={uuidv4()}>
-              <tr className="bg-slate-600 text-white">
-                <td className="p-3">
-                  <Link
-                    to={`/portfolio/${portfolio.id}`}
-                    className="block w-full"
-                  >
-                    {portfolio.name}
-                  </Link>
-                </td>
-                <td className="text-center space-x-3">
-                  <button onClick={() => handleEditPortfolio(portfolio)}>
-                    <EditIcon />
-                  </button>
-                  <button onClick={() => handleDeletePortfolio(portfolio.id)}>
-                    <TrashIcon />
-                  </button>
-                </td>
-              </tr>
-            </React.Fragment>
-          );
-        })}
-      </tbody>
-    </table>
-  );
+  const headers = ["Name", ""];
+
+  const rows: TableRow[] = query.data.map((portfolio) => {
+    return [
+      {
+        content: (
+          <Link to={`/portfolio/${portfolio.id}`} className="block w-full">
+            {portfolio.name}
+          </Link>
+        ),
+      },
+      {
+        className: "text-center space-x-3",
+        content: (
+          <>
+            <button onClick={() => handleEditPortfolio(portfolio)}>
+              <EditIcon />
+            </button>
+            <button onClick={() => handleDeletePortfolio(portfolio.id)}>
+              <TrashIcon />
+            </button>
+          </>
+        ),
+      },
+    ];
+  });
+
+  return <TableList headers={headers} rows={rows} />;
 };
