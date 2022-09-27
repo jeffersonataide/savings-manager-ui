@@ -1,4 +1,4 @@
-import { Footer } from "../Footer";
+import { Footer } from "../Atomic/Organisms/Footer";
 import { Nav } from "../Atomic/Organisms/Nav";
 
 interface LayoutProps {
