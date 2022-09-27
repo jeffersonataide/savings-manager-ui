@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import { renderWithRouter } from "../../tests";
-import { Layout } from "./";
+import { renderWithRouter } from "../../../../tests";
+import { Layout } from ".";
 
 test("renders content inside Layout", () => {
   renderWithRouter(
