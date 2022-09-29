@@ -8,6 +8,8 @@ import { EditAssetForm } from "components/Atomic/Organisms/EditAssetForm";
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
+import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
+import { CreateAssetForm } from "components/Atomic/Organisms/CreateAssetForm";
 
 interface AssetsListParams {
   portfolioId: string;
@@ -52,7 +54,21 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
     return null;
   }
 
-  const headers = ["Name", ""];
+  const headers = [
+    "Name",
+    <CreateItemModal
+      buttonText="Create asset"
+      modalProperties={{
+        title: "Create Asset",
+        content: (
+          <CreateAssetForm
+            onSubmit={modalContext.closeModal}
+            portfolioId={portfolioId}
+          />
+        ),
+      }}
+    />,
+  ];
 
   const rows: TableRow[] = query.data.map((asset) => {
     return [
