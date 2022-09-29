@@ -1,12 +1,12 @@
 import { PortfoliosList } from "components/Atomic/Organisms/PortfoliosList";
-import { useUser } from "contexts/userContext";
+import { useUserStore } from "store/userStore";
 
 export const Home = () => {
-  const userContext = useUser();
+  const isLogged = useUserStore((state) => state.isLogged);
 
   return (
     <div className="flex flex-col items-center">
-      {userContext?.isLogged ? (
+      {isLogged ? (
         <PortfoliosList />
       ) : (
         <h1 className="text-lg">Create an account to use the application</h1>

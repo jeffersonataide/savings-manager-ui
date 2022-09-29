@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useUser } from "contexts/userContext";
+import { useUserStore } from "store/userStore";
 
 const openLinks = [{ label: "Home", url: "/" }];
 const closedLinks = [{ label: "Portfolios", url: "/portfolio" }];
 
 export const Nav = () => {
-  const userContext = useUser();
+  const { isLogged, handleLogout } = useUserStore((state) => ({
+    isLogged: state.isLogged,
+    handleLogout: state.handleLogout,
+  }));
 
   let links = openLinks;
 
-  if (userContext?.isLogged) {
+  if (isLogged) {
     links = [...links, ...closedLinks];
   }
 
@@ -26,8 +29,8 @@ export const Nav = () => {
             {link.label}
           </Link>
         ))}
-        {userContext?.isLogged ? (
-          <button className="mx-2 sm:mx-5" onClick={userContext.handleLogout}>
+        {isLogged ? (
+          <button className="mx-2 sm:mx-5" onClick={handleLogout}>
             Logout
           </button>
         ) : (

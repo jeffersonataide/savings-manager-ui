@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getLocalJWT, removeLocalJWT } from "utils/localStorage";
+import { useUserStore } from "store/userStore";
+import { getLocalJWT } from "utils/localStorage";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -26,7 +27,7 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
-      removeLocalJWT();
+      useUserStore.getState().handleLogout();
     }
   }
 );
