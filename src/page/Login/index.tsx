@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserStore } from "store/userStore";
 import { LoginForm } from "components/Atomic/Organisms/LoginForm";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const isLogged = useUserStore((state) => state.isLogged);
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate("/");
+    }
+  }, [isLogged, navigate]);
+
   return (
     <div className="flex flex-col items-center">
       <LoginForm />
