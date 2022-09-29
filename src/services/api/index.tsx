@@ -1,17 +1,15 @@
 import axios from "axios";
 import { useUserStore } from "store/userStore";
-import { getLocalJWT } from "utils/localStorage";
 
 const API_URL = process.env.REACT_APP_API_URL;
-
-let jwt = getLocalJWT();
 
 const api = axios.create({
   baseURL: API_URL,
 });
 
 api.interceptors.request.use((config) => {
-  jwt = getLocalJWT();
+  const jwt = useUserStore.getState().jwt;
+
   if (jwt) {
     config.headers = {
       ...config.headers,

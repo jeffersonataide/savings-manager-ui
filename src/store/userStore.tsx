@@ -1,19 +1,23 @@
 import create from "zustand";
 import { getUserMe, TUserBase } from "services/api/users";
-import { removeLocalJWT, setLocalJWT } from "utils/localStorage";
+import { getLocalJWT, removeLocalJWT, setLocalJWT } from "utils/localStorage";
 
 interface TUserState {
   isLogged: boolean;
   user?: TUserBase;
+  jwt?: string | null;
   fetch: () => void;
   handleLogout: () => void;
   handleLogin: (jwt: string) => void;
 }
 
 export const useUserStore = create<TUserState>((set) => {
+  const jwt = getLocalJWT();
+
   return {
-    isLogged: false,
+    isLogged: !!jwt,
     user: undefined,
+    jwt,
     fetch: async () => {
       try {
         const user = await getUserMe();
@@ -24,11 +28,11 @@ export const useUserStore = create<TUserState>((set) => {
     },
     handleLogout: () => {
       removeLocalJWT();
-      set({ isLogged: false });
+      set({ isLogged: false, jwt: undefined });
     },
     handleLogin: (jwt: string) => {
       setLocalJWT(jwt);
-      set({ isLogged: true });
+      set({ isLogged: true, jwt });
     },
   };
 });
