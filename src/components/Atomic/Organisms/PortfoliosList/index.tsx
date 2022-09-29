@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
+import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
+import { CreatePortfolioForm } from "components/Atomic/Organisms/CreatePortfolioForm";
 
 export const PortfoliosList = () => {
   const query = useQuery("portfolios", fetchPortfolios);
@@ -50,7 +52,16 @@ export const PortfoliosList = () => {
     return null;
   }
 
-  const headers = ["Name", ""];
+  const headers = [
+    "Name",
+    <CreateItemModal
+      buttonText="Create portfolio"
+      modalProperties={{
+        title: "Create Portfolio",
+        content: <CreatePortfolioForm onSubmit={modalContext.closeModal} />,
+      }}
+    />,
+  ];
 
   const rows: TableRow[] = query.data.map((portfolio) => {
     return [
