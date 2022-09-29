@@ -57,7 +57,6 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
     "Description",
     "Amount",
     <CreateItemModal
-      buttonText="Add"
       modalProperties={{
         title: "Create deposit",
         content: (

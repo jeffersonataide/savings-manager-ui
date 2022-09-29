@@ -57,7 +57,6 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
   const headers = [
     "Name",
     <CreateItemModal
-      buttonText="Create asset"
       modalProperties={{
         title: "Create Asset",
         content: (

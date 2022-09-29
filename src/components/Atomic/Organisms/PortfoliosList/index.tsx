@@ -55,7 +55,6 @@ export const PortfoliosList = () => {
   const headers = [
     "Name",
     <CreateItemModal
-      buttonText="Create portfolio"
       modalProperties={{
         title: "Create Portfolio",
         content: <CreatePortfolioForm onSubmit={modalContext.closeModal} />,
