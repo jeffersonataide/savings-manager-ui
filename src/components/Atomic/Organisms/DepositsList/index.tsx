@@ -71,7 +71,7 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   ];
 
   const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
-    const depositDate = new Date(deposit.date);
+    const depositDate = new Date(`${deposit.date}T00:00:00`);
     const formattedDepositDate = format(depositDate, "dd MMM yyyy");
     return [
       {
