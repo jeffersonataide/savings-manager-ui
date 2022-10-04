@@ -24,29 +24,41 @@ export const DepositForm = ({
 
   return (
     <form onSubmit={FormsHooksHandleSubmit(handleSubmit)}>
-      <div className="my-3 flex items-center">
-        <label>* Amount:</label>
-        {errors.amount && <span>This field is required</span>}
+      <div className="m-3 flex flex-col">
+        <label>
+          * Amount:
+          {errors.amount && (
+            <span className="ml-3 text-red-400">This field is required</span>
+          )}
+        </label>
         <input
-          className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
+          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
           type="number"
           {...register("amount", { required: true })}
         />
       </div>
-      <div className="my-3 flex items-center">
-        <label>* Date:</label>
-        {errors.date && <span>This field is required</span>}
+      <div className="m-3 flex flex-col">
+        <label>
+          * Date:
+          {errors.date && (
+            <span className="ml-3 text-red-400">This field is required</span>
+          )}
+        </label>
         <input
-          className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
+          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
           type="date"
           {...register("date", { required: true })}
         />
       </div>
-      <div className="my-3 flex items-center">
-        <label>Description:</label>
-        {errors.description && <span>Enter a valid description</span>}
+      <div className="m-3 flex flex-col">
+        <label>
+          Description:
+          {errors.description && (
+            <span className="ml-3 text-red-400">Enter a valid description</span>
+          )}
+        </label>
         <input
-          className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
+          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
           type="text"
           {...register("description")}
         />

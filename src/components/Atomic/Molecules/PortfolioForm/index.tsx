@@ -24,11 +24,15 @@ export const PortfolioForm = ({
 
   return (
     <form onSubmit={FormsHooksHandleSubmit(handleSubmit)}>
-      <div className="my-3 flex items-center">
-        <label>* Name:</label>
-        {errors.name && <span>This field is required</span>}
+      <div className="m-3 flex flex-col">
+        <label>
+          * Name:
+          {errors.name && (
+            <span className="ml-3 text-red-400">This field is required</span>
+          )}
+        </label>
         <input
-          className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
+          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
           type="text"
           {...register("name", { required: true })}
         />
