@@ -9,6 +9,7 @@ import { EditDepositForm } from "../EditDepositForm";
 import { sortByDate } from "utils/sorting";
 import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
 import { CreateDepositForm } from "../CreateDepositForm";
+import { format } from "date-fns";
 
 interface DepositsListParams {
   assetId: string;
@@ -70,9 +71,11 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   ];
 
   const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
+    const depositDate = new Date(deposit.date);
+    const formattedDepositDate = format(depositDate, "dd MMM yyyy");
     return [
       {
-        content: deposit.date,
+        content: formattedDepositDate,
       },
       {
         content: deposit.description ? deposit.description : "",
