@@ -15,7 +15,6 @@ export const DepositForm = ({
   const {
     register,
     handleSubmit: FormsHooksHandleSubmit,
-
     formState: { errors },
   } = useForm<TDepositBase>({ defaultValues: initialData });
 
@@ -36,6 +35,7 @@ export const DepositForm = ({
       </div>
       <div className="my-3 flex items-center">
         <label>* Date:</label>
+        {errors.date && <span>This field is required</span>}
         <input
           className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
           type="date"
@@ -44,6 +44,7 @@ export const DepositForm = ({
       </div>
       <div className="my-3 flex items-center">
         <label>Description:</label>
+        {errors.description && <span>Enter a valid description</span>}
         <input
           className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
           type="text"
