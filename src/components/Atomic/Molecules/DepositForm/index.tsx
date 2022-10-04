@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { TDepositBase } from "services/api/deposits";
 
 interface DepositFormParams {
@@ -7,55 +7,39 @@ interface DepositFormParams {
   onSubmit: (deposit: TDepositBase) => void;
 }
 
-const DEPOSIT_INITIAL = {
-  amount: 0,
-  date: "",
-  description: "",
-};
-
 export const DepositForm = ({
-  initialData = DEPOSIT_INITIAL,
+  initialData,
   submitButtonText,
   onSubmit,
 }: DepositFormParams) => {
-  const [deposit, setDeposit] = useState<TDepositBase>(initialData);
+  const {
+    register,
+    handleSubmit: FormsHooksHandleSubmit,
 
-  const onAmountChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setDeposit({ ...deposit, amount: Number(e.target.value) });
-  };
+    formState: { errors },
+  } = useForm<TDepositBase>({ defaultValues: initialData });
 
-  const onDateChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setDeposit({ ...deposit, date: e.target.value });
-  };
-
-  const onDescriptionChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setDeposit({ ...deposit, description: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit: SubmitHandler<TDepositBase> = (deposit) => {
     onSubmit(deposit);
-    setDeposit(initialData);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={FormsHooksHandleSubmit(handleSubmit)}>
       <div className="my-3 flex items-center">
-        <label>Amount:</label>
+        <label>* Amount:</label>
+        {errors.amount && <span>This field is required</span>}
         <input
           className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
-          type="text"
-          value={deposit.amount}
-          onChange={onAmountChange}
+          type="number"
+          {...register("amount", { required: true })}
         />
       </div>
       <div className="my-3 flex items-center">
-        <label>Date:</label>
+        <label>* Date:</label>
         <input
           className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
-          type="text"
-          value={deposit.date}
-          onChange={onDateChange}
+          type="date"
+          {...register("date", { required: true })}
         />
       </div>
       <div className="my-3 flex items-center">
@@ -63,8 +47,7 @@ export const DepositForm = ({
         <input
           className="rounded-lg ml-3 p-2 flex-grow border-slate-400 border-2"
           type="text"
-          value={deposit.description}
-          onChange={onDescriptionChange}
+          {...register("description")}
         />
       </div>
       <div className="flex justify-end">
