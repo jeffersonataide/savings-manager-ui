@@ -32,13 +32,14 @@ export const DepositForm = ({
     setDeposit({ ...deposit, description: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     onSubmit(deposit);
     setDeposit(initialData);
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div className="my-3 flex items-center">
         <label>Amount:</label>
         <input
@@ -69,11 +70,11 @@ export const DepositForm = ({
       <div className="flex justify-end">
         <button
           className="bg-slate-100 my-3 p-1 px-5 rounded-2xl border-slate-500 border-2"
-          onClick={handleSubmit}
+          type="submit"
         >
           {submitButtonText}
         </button>
       </div>
-    </div>
+    </form>
   );
 };
