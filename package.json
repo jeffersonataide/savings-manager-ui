@@ -21,6 +21,7 @@
     "react-query": "^3.39.1",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
+    "recharts": "^2.1.14",
     "typescript": "^4.7.2",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
@@ -63,5 +64,10 @@
   },
   "lint-staged": {
     "*.{js,css,md,tsx,ts}": "prettier --write --ignore-unknown"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!d3|d3-shape|d3-array|internmap|delaunator|robust-predicates)"
+    ]
   }
 }

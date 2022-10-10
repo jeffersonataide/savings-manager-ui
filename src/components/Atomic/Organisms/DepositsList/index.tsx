@@ -1,15 +1,15 @@
-import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 import { useQuery } from "react-query";
 import { fetchDeposits, TDeposit } from "services/api/deposits";
 import { useModal } from "contexts/modalContext";
+import { sortByDate } from "utils/sorting";
+import { formatDateStringToLong } from "utils/dateFormating";
+import { DeleteDepositForm } from "components/Atomic/Organisms/DeleteDepositForm";
+import { EditDepositForm } from "components/Atomic/Organisms/EditDepositForm";
+import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
+import { CreateDepositForm } from "components/Atomic/Organisms/CreateDepositForm";
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
-import { DeleteDepositForm } from "../DeleteDepositForm";
-import { EditDepositForm } from "../EditDepositForm";
-import { sortByDate } from "utils/sorting";
-import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
-import { CreateDepositForm } from "../CreateDepositForm";
-import { format } from "date-fns";
+import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 
 interface DepositsListParams {
   assetId: string;
@@ -71,8 +71,7 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   ];
 
   const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
-    const depositDate = new Date(`${deposit.date}T00:00:00`);
-    const formattedDepositDate = format(depositDate, "dd MMM yyyy");
+    const formattedDepositDate = formatDateStringToLong(deposit.date);
     return [
       {
         content: formattedDepositDate,

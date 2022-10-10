@@ -1,3 +1,4 @@
+import { DepositsChart } from "components/Atomic/Molecules/DepositsChart";
 import { DepositsList } from "components/Atomic/Organisms/DepositsList";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -25,6 +26,9 @@ export const AssetDetails = () => {
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-center text-3xl m-4">{query.data.name}</h1>
+      <div className="h-96 w-screen p-10">
+        <DepositsChart assetName={query.data.name} assetId={query.data.id} />
+      </div>
       <DepositsList assetId={query.data.id} />
     </div>
   );
