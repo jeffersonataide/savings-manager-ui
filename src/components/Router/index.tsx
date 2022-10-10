@@ -29,7 +29,7 @@ export const openRoutes: RouteInfo[] = [
   },
   {
     name: "Create Account",
-    path: "create-account",
+    path: "/create-account",
     element: <CreateAccount />,
   },
 ];
@@ -50,10 +50,10 @@ export const Router = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (
-      !isLogged &&
-      !openRoutes.filter((route) => route.path === location.pathname).length
-    ) {
+    const isOpenRoute = !!openRoutes.find(
+      (route) => route.path === location.pathname
+    );
+    if (!isLogged && !isOpenRoute) {
       navigate("/");
     }
   }, [isLogged, navigate, location.pathname]);
