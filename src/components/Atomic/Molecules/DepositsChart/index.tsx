@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { fetchDeposits } from "services/api/deposits";
 import { formatDateStringToLong } from "utils/dateFormating";
 import { sortByDate } from "utils/sorting";
-import { ChartLine } from "components/Atomic/Atoms/ChartLine";
+import { LineChart } from "components/Atomic/Atoms/LineChart";
 
 interface DepositsChartProps {
   assetName: string;
@@ -35,5 +35,5 @@ export const DepositsChart: React.FC<DepositsChartProps> = ({
   };
 
   const lines = [depositsData];
-  return <ChartLine linesData={lines} />;
+  return <LineChart linesData={lines} />;
 };
