@@ -1,4 +1,5 @@
 import { api } from ".";
+import { TDeposit } from "./deposits";
 
 export interface TAssetBase {
   name: string;
@@ -6,6 +7,8 @@ export interface TAssetBase {
 
 export interface TAsset extends TAssetBase {
   id: string;
+  portfolio_id: string;
+  deposits: TDeposit[];
 }
 
 export const fetchAssets = async (portfolioId: string): Promise<TAsset[]> => {
