@@ -35,7 +35,7 @@ export const EditPortfolioForm = ({
   return (
     <PortfolioForm
       initialData={portfolio}
-      submitButtonText={"Edit"}
+      submitButtonText={"Save"}
       onSubmit={handleSubmit}
     />
   );

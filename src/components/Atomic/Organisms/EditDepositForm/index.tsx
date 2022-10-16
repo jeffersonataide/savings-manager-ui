@@ -31,7 +31,7 @@ export const EditDepositForm = ({
   return (
     <DepositForm
       initialData={deposit}
-      submitButtonText={"Edit"}
+      submitButtonText={"Save"}
       onSubmit={handleSubmit}
     />
   );

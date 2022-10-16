@@ -28,7 +28,7 @@ export const EditAssetForm = ({ asset, onSubmit }: EditAssetFormParams) => {
   return (
     <AssetForm
       initialData={asset}
-      submitButtonText={"Edit"}
+      submitButtonText={"Save"}
       onSubmit={handleSubmit}
     />
   );
