@@ -24,7 +24,7 @@ export const PortfolioForm = ({
 
   return (
     <form onSubmit={FormsHooksHandleSubmit(handleSubmit)}>
-      <div className="m-3 flex flex-col">
+      <div className="my-3 flex flex-col">
         <label>
           * Name:
           {errors.name && (
