@@ -24,9 +24,7 @@ export const PortfolioDetails = () => {
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-center text-3xl m-4">{query.data?.name}</h1>
-      <div className="h-96 w-screen p-10">
-        <AssetsPieChart portfolioId={portfolioId} />
-      </div>
+      <AssetsPieChart portfolioId={portfolioId} />
       <AssetsList portfolioId={portfolioId} />
     </div>
   );
