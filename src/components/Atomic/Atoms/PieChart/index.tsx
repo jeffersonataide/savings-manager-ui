@@ -17,7 +17,7 @@ export const PieChart: React.FC<PieChartProps> = ({ data }) => {
         `${datum.x} - $${Math.round(datum.y)}`
       }
       innerRadius={60}
-      labelRadius={170}
+      labelRadius={({ radius }) => Number(radius) + 20}
       style={{
         labels: {
           fontSize: 20,
