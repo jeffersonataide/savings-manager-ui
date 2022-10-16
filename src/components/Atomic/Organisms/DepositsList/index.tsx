@@ -83,7 +83,7 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
         content: deposit.amount,
       },
       {
-        className: "text-center space-x-3",
+        className: "text-right space-x-3",
         content: (
           <>
             <button onClick={() => handleEditDeposit(deposit)}>

@@ -79,7 +79,7 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
         ),
       },
       {
-        className: "text-center space-x-3",
+        className: "text-right space-x-3",
         content: (
           <>
             <button onClick={() => handleEditAsset(asset)}>

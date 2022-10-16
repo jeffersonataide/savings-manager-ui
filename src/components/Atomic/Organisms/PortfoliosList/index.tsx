@@ -73,7 +73,7 @@ export const PortfoliosList = () => {
             ),
           },
           {
-            className: "text-center space-x-3",
+            className: "text-right space-x-3",
             content: (
               <>
                 <button onClick={() => handleEditPortfolio(portfolio)}>
