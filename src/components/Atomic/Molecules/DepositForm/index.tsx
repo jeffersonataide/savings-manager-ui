@@ -37,7 +37,7 @@ export const DepositForm = ({
           {...register("amount", { required: true })}
         />
       </div>
-      <div className="m-3 flex flex-col">
+      <div className="my-3 flex flex-col">
         <label>
           * Date:
           {errors.date && (
@@ -50,7 +50,7 @@ export const DepositForm = ({
           {...register("date", { required: true })}
         />
       </div>
-      <div className="m-3 flex flex-col">
+      <div className="my-3 flex flex-col">
         <label>
           Description:
           {errors.description && (
