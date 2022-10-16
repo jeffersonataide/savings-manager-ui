@@ -6,7 +6,7 @@ export const CreateAccount = () => {
     <div className="flex flex-col items-center">
       <CreateUserForm />
       Already have an account?
-      <Link className="hover:text-blue-500" to="/login">
+      <Link className="text-blue-600 hover:text-blue-300" to="/login">
         Login
       </Link>
     </div>
