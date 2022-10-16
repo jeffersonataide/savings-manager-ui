@@ -35,5 +35,11 @@ export const DepositsChart: React.FC<DepositsChartProps> = ({
   };
 
   const lines = [depositsData];
-  return <LineChart linesData={lines} />;
+  const hasDatapoints = !!lines.find((line) => !!line.datapoints.length);
+
+  return hasDatapoints ? (
+    <div className="h-96 w-screen p-10">
+      <LineChart linesData={lines} />
+    </div>
+  ) : null;
 };
