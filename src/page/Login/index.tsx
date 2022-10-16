@@ -17,7 +17,7 @@ export const Login = () => {
     <div className="flex flex-col items-center">
       <LoginForm />
       Don't have an account yet?
-      <Link className="hover:text-blue-500" to="/create-account">
+      <Link className="text-blue-600 hover:text-blue-300" to="/create-account">
         Create an account
       </Link>
     </div>
