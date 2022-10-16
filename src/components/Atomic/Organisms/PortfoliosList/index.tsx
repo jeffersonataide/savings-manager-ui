@@ -62,30 +62,32 @@ export const PortfoliosList = () => {
     />,
   ];
 
-  const rows: TableRow[] = query.data.map((portfolio) => {
-    return [
-      {
-        content: (
-          <Link to={`/portfolio/${portfolio.id}`} className="block w-full">
-            {portfolio.name}
-          </Link>
-        ),
-      },
-      {
-        className: "text-center space-x-3",
-        content: (
-          <>
-            <button onClick={() => handleEditPortfolio(portfolio)}>
-              <EditIcon />
-            </button>
-            <button onClick={() => handleDeletePortfolio(portfolio.id)}>
-              <TrashIcon />
-            </button>
-          </>
-        ),
-      },
-    ];
-  });
+  const rows: TableRow[] = query.data.length
+    ? query.data.map((portfolio) => {
+        return [
+          {
+            content: (
+              <Link to={`/portfolio/${portfolio.id}`} className="block w-full">
+                {portfolio.name}
+              </Link>
+            ),
+          },
+          {
+            className: "text-center space-x-3",
+            content: (
+              <>
+                <button onClick={() => handleEditPortfolio(portfolio)}>
+                  <EditIcon />
+                </button>
+                <button onClick={() => handleDeletePortfolio(portfolio.id)}>
+                  <TrashIcon />
+                </button>
+              </>
+            ),
+          },
+        ];
+      })
+    : [];
 
   return <TableList headers={headers} rows={rows} />;
 };
