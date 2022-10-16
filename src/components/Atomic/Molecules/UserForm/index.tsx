@@ -1,6 +1,6 @@
-import { ChangeEventHandler, FormEvent, useState } from "react";
 import { TUserCreate } from "services/api/users";
 import { Box } from "components/Atomic/Atoms/Box";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface UserFormParams {
   title: string;
@@ -8,49 +8,50 @@ interface UserFormParams {
   onSubmit: (user: TUserCreate) => void;
 }
 
-const USER_INITIAL: TUserCreate = { username: "", password: "" };
-
 export const UserForm = ({
   title,
   submitButtonText,
   onSubmit,
 }: UserFormParams) => {
-  const [user, setUser] = useState<TUserCreate>(USER_INITIAL);
+  const {
+    register,
+    handleSubmit: FormsHooksHandleSubmit,
+    formState: { errors },
+  } = useForm<TUserCreate>();
 
-  const onUsernameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setUser({ ...user, username: e.target.value });
-  };
-
-  const onPasswordChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setUser({ ...user, password: e.target.value });
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit: SubmitHandler<TUserCreate> = (user) => {
+    console.log("Submited User: ", user);
     onSubmit(user);
-    setUser(USER_INITIAL);
   };
 
   return (
     <Box>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={FormsHooksHandleSubmit(handleSubmit)}>
         <h2 className="font-bold text-center">{title}</h2>
-        <div className="my-3">
-          <label>Username:</label>
+        <div className="my-3 flex flex-col">
+          <label>
+            * Username:
+            {errors.username && (
+              <span className="ml-3 text-red-400">This field is required</span>
+            )}
+          </label>
           <input
             className="rounded-lg ml-3 p-2 border-slate-400 border-2"
             type="text"
-            value={user.username}
-            onChange={onUsernameChange}
+            {...register("username", { required: true })}
           />
         </div>
-        <div className="my-3">
-          <label>Password:</label>
+        <div className="my-3 flex flex-col">
+          <label>
+            * Password:
+            {errors.password && (
+              <span className="ml-3 text-red-400">This field is required</span>
+            )}
+          </label>
           <input
             className="rounded-lg ml-3 p-2 border-slate-400 border-2"
             type="password"
-            value={user.password}
-            onChange={onPasswordChange}
+            {...register("password", { required: true })}
           />
         </div>
         <div className="flex justify-end">
