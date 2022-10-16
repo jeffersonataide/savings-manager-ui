@@ -20,7 +20,6 @@ export const UserForm = ({
   } = useForm<TUserCreate>();
 
   const handleSubmit: SubmitHandler<TUserCreate> = (user) => {
-    console.log("Submited User: ", user);
     onSubmit(user);
   };
 
@@ -32,13 +31,22 @@ export const UserForm = ({
           <label>
             * Username:
             {errors.username && (
-              <span className="ml-3 text-red-400">This field is required</span>
+              <span className="ml-3 text-red-400">
+                {errors.username.type === "invalidUsername"
+                  ? "Only letters and numbers allowed"
+                  : "This field is required"}
+              </span>
             )}
           </label>
           <input
             className="rounded-lg ml-3 p-2 border-slate-400 border-2"
             type="text"
-            {...register("username", { required: true })}
+            {...register("username", {
+              required: true,
+              validate: {
+                invalidUsername: (v) => /[a-z]+[a-z0-9]./.test(v),
+              },
+            })}
           />
         </div>
         <div className="my-3 flex flex-col">
