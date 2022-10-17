@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 interface UserFormParams {
   title: string;
   submitButtonText: string;
-  onSubmit: (user: TUserCreate) => void;
+  onSubmit: (user: TUserCreate) => Promise<void>;
 }
 
 export const UserForm = ({
@@ -17,10 +17,17 @@ export const UserForm = ({
     register,
     handleSubmit: FormsHooksHandleSubmit,
     formState: { errors },
+    setError,
   } = useForm<TUserCreate>();
 
-  const handleSubmit: SubmitHandler<TUserCreate> = (user) => {
-    onSubmit(user);
+  const handleSubmit: SubmitHandler<TUserCreate> = async (user) => {
+    try {
+      await onSubmit(user);
+    } catch (error) {
+      setError("username", {
+        type: "userExists",
+      });
+    }
   };
 
   return (
@@ -34,6 +41,8 @@ export const UserForm = ({
               <span className="ml-3 text-red-400">
                 {errors.username.type === "invalidUsername"
                   ? "Only letters and numbers allowed"
+                  : errors.username.type === "userExists"
+                  ? "Username already exists"
                   : "This field is required"}
               </span>
             )}
@@ -44,7 +53,7 @@ export const UserForm = ({
             {...register("username", {
               required: true,
               validate: {
-                invalidUsername: (v) => /[a-z]+[a-z0-9]./.test(v),
+                invalidUsername: (v) => /^([a-z]+)([a-z0-9].)$/.test(v),
               },
             })}
           />

@@ -8,12 +8,18 @@ export const CreateUserForm = () => {
   const mutation = useMutation(createUser);
   const navigate = useNavigate();
 
-  const handleSubmit = (user: TUserCreate) => {
-    mutation.mutate(user, {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["user"]);
-        navigate("/login");
-      },
+  const handleSubmit = async (user: TUserCreate) => {
+    return new Promise<void>((resolve, reject) => {
+      mutation.mutate(user, {
+        onSuccess: () => {
+          queryClient.invalidateQueries(["user"]);
+          navigate("/login");
+          resolve();
+        },
+        onError: (error) => {
+          reject(error);
+        },
+      });
     });
   };
 

@@ -9,7 +9,7 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const handleLogin = useUserStore((state) => state.handleLogin);
 
-  const handleSubmit = (user: TUserLogin) => {
+  const handleSubmit = async (user: TUserLogin) => {
     mutation.mutate(user, {
       onSuccess: (result) => {
         handleLogin(result.access_token);
