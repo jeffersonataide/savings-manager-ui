@@ -26,6 +26,8 @@ api.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       useUserStore.getState().handleLogout();
+    } else {
+      throw error;
     }
   }
 );
