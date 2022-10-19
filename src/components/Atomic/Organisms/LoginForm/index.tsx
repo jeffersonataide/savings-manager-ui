@@ -22,6 +22,7 @@ export const LoginForm = () => {
     <UserForm
       title={"Login"}
       submitButtonText={"Login"}
+      isLoading={mutation.isLoading}
       onSubmit={handleSubmit}
     />
   );

@@ -22,5 +22,11 @@ export const CreatePortfolioForm: React.FC<CreatePortfolioFormParams> = ({
     });
   };
 
-  return <PortfolioForm submitButtonText={"Create"} onSubmit={handleSubmit} />;
+  return (
+    <PortfolioForm
+      submitButtonText={"Create"}
+      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
+    />
+  );
 };

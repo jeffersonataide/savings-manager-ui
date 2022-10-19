@@ -27,5 +27,11 @@ export const CreateDepositForm: React.FC<CreateDepositFormParams> = ({
     );
   };
 
-  return <DepositForm submitButtonText={"Create"} onSubmit={handleSubmit} />;
+  return (
+    <DepositForm
+      submitButtonText={"Create"}
+      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
+    />
+  );
 };

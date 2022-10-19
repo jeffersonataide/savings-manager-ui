@@ -1,16 +1,19 @@
 import { TUserCreate } from "services/api/users";
 import { Box } from "components/Atomic/Atoms/Box";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitButton } from "../SubmitButton";
 
 interface UserFormParams {
   title: string;
   submitButtonText: string;
+  isLoading: boolean;
   onSubmit: (user: TUserCreate) => Promise<void>;
 }
 
 export const UserForm = ({
   title,
   submitButtonText,
+  isLoading,
   onSubmit,
 }: UserFormParams) => {
   const {
@@ -72,12 +75,7 @@ export const UserForm = ({
           />
         </div>
         <div className="flex justify-end">
-          <button
-            className="bg-white m-3 p-1 px-5 rounded-lg border-cyan-500 border-2"
-            type="submit"
-          >
-            {submitButtonText}
-          </button>
+          <SubmitButton isLoading={isLoading} text={submitButtonText} />
         </div>
       </form>
     </Box>

@@ -29,6 +29,7 @@ export const EditAssetForm = ({ asset, onSubmit }: EditAssetFormParams) => {
     <AssetForm
       initialData={asset}
       submitButtonText={"Save"}
+      isLoading={mutation.isLoading}
       onSubmit={handleSubmit}
     />
   );

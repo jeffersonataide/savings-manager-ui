@@ -1,15 +1,18 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TDepositBase } from "services/api/deposits";
+import { SubmitButton } from "../SubmitButton";
 
 interface DepositFormParams {
   initialData?: TDepositBase;
   submitButtonText: string;
+  isLoading: boolean;
   onSubmit: (deposit: TDepositBase) => void;
 }
 
 export const DepositForm = ({
   initialData,
   submitButtonText,
+  isLoading,
   onSubmit,
 }: DepositFormParams) => {
   const {
@@ -64,12 +67,7 @@ export const DepositForm = ({
         />
       </div>
       <div className="flex justify-end">
-        <button
-          className="bg-slate-100 my-3 p-1 px-5 rounded-2xl border-slate-500 border-2"
-          type="submit"
-        >
-          {submitButtonText}
-        </button>
+        <SubmitButton isLoading={isLoading} text={submitButtonText} />
       </div>
     </form>
   );

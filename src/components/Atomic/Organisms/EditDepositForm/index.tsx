@@ -32,6 +32,7 @@ export const EditDepositForm = ({
     <DepositForm
       initialData={deposit}
       submitButtonText={"Save"}
+      isLoading={mutation.isLoading}
       onSubmit={handleSubmit}
     />
   );

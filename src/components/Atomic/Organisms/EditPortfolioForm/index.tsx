@@ -36,6 +36,7 @@ export const EditPortfolioForm = ({
     <PortfolioForm
       initialData={portfolio}
       submitButtonText={"Save"}
+      isLoading={mutation.isLoading}
       onSubmit={handleSubmit}
     />
   );

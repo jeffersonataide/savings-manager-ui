@@ -1,15 +1,18 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TPortfolioBase } from "services/api/portfolios";
+import { SubmitButton } from "../SubmitButton";
 
 interface PortfolioFormParams {
   initialData?: TPortfolioBase;
   submitButtonText: string;
+  isLoading: boolean;
   onSubmit: (portfolio: TPortfolioBase) => void;
 }
 
 export const PortfolioForm = ({
   initialData,
   submitButtonText,
+  isLoading,
   onSubmit,
 }: PortfolioFormParams) => {
   const {
@@ -38,12 +41,7 @@ export const PortfolioForm = ({
         />
       </div>
       <div className="flex justify-end">
-        <button
-          className="bg-slate-100 my-3 p-1 px-5 rounded-2xl border-slate-500 border-2"
-          type="submit"
-        >
-          {submitButtonText}
-        </button>
+        <SubmitButton isLoading={isLoading} text={submitButtonText} />
       </div>
     </form>
   );

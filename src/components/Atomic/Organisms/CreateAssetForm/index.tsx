@@ -27,5 +27,11 @@ export const CreateAssetForm: React.FC<CreateAssetFormParams> = ({
     );
   };
 
-  return <AssetForm submitButtonText={"Create"} onSubmit={handleSubmit} />;
+  return (
+    <AssetForm
+      submitButtonText={"Create"}
+      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
+    />
+  );
 };

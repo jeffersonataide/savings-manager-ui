@@ -27,6 +27,7 @@ export const CreateUserForm = () => {
     <UserForm
       title={"Create User"}
       submitButtonText={"Create"}
+      isLoading={mutation.isLoading}
       onSubmit={handleSubmit}
     />
   );
