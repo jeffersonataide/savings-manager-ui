@@ -10,6 +10,7 @@ import { CreateDepositForm } from "components/Atomic/Organisms/CreateDepositForm
 import { EditIcon } from "components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
+import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
 
 interface DepositsListParams {
   assetId: string;
@@ -20,7 +21,7 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   const modalContext = useModal();
 
   if (query.isLoading) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {

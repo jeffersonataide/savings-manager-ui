@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchPortfolio } from "services/api/portfolios";
 import { AssetsList } from "components/Atomic/Organisms/AssetsList";
 import { AssetsPieChart } from "components/Atomic/Molecules/AssetsPieChart";
+import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
 
 export const PortfolioDetails = () => {
   const { portfolioId } = useParams();
@@ -12,7 +13,7 @@ export const PortfolioDetails = () => {
   );
 
   if (query.isLoading) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {

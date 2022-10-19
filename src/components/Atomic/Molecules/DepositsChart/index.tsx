@@ -3,6 +3,7 @@ import { fetchDeposits } from "services/api/deposits";
 import { formatDateStringToLong } from "utils/dateFormating";
 import { sortByDate } from "utils/sorting";
 import { LineChart } from "components/Atomic/Atoms/LineChart";
+import { LoadingScreen } from "../LoadingScreen";
 
 interface DepositsChartProps {
   assetName: string;
@@ -15,7 +16,7 @@ export const DepositsChart: React.FC<DepositsChartProps> = ({
   const query = useQuery("deposits", () => fetchDeposits(assetId));
 
   if (query.isLoading) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {

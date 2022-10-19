@@ -1,4 +1,5 @@
 import { DepositsChart } from "components/Atomic/Molecules/DepositsChart";
+import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
 import { DepositsList } from "components/Atomic/Organisms/DepositsList";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
@@ -12,7 +13,7 @@ export const AssetDetails = () => {
   );
 
   if (query.isLoading) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {

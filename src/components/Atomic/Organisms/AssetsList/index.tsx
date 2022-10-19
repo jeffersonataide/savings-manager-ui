@@ -10,6 +10,7 @@ import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
 import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
 import { CreateAssetForm } from "components/Atomic/Organisms/CreateAssetForm";
+import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
 
 interface AssetsListParams {
   portfolioId: string;
@@ -21,7 +22,7 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
   const modalContext = useModal();
 
   if (query.isLoading) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {

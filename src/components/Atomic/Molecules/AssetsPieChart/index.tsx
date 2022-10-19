@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchAssets } from "services/api/assets";
 import { PieChart } from "components/Atomic/Atoms/PieChart";
+import { LoadingScreen } from "../LoadingScreen";
 
 interface AssetsPieChartProps {
   portfolioId: string;
@@ -12,7 +13,7 @@ export const AssetsPieChart: React.FC<AssetsPieChartProps> = ({
   const query = useQuery("assets", () => fetchAssets(portfolioId));
 
   if (query.isLoading || !query.data) {
-    return <span>Loading ...</span>;
+    return <LoadingScreen />;
   }
 
   if (query.isError && query.error instanceof Error) {
