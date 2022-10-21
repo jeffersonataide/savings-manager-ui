@@ -28,8 +28,9 @@ export const DeleteAssetForm: React.FC<DeleteAssetFormParams> = ({
   return (
     <DeleteItemForm
       itemName="asset"
-      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
       onCancel={onCancel}
+      onSubmit={handleSubmit}
     />
   );
 };

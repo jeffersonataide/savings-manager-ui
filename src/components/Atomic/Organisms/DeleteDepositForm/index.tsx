@@ -28,8 +28,9 @@ export const DeleteDepositForm: React.FC<DeleteDepositFormParams> = ({
   return (
     <DeleteItemForm
       itemName="deposit"
-      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
       onCancel={onCancel}
+      onSubmit={handleSubmit}
     />
   );
 };

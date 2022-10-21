@@ -28,8 +28,9 @@ export const DeletePortfolioForm: React.FC<DeletePortfolioFormParams> = ({
   return (
     <DeleteItemForm
       itemName="portfolio"
-      onSubmit={handleSubmit}
+      isLoading={mutation.isLoading}
       onCancel={onCancel}
+      onSubmit={handleSubmit}
     />
   );
 };
