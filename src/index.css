@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .text-input {
+    @apply rounded-lg p-2 my-2 flex-grow border-slate-400 border-2;
+  }
+}

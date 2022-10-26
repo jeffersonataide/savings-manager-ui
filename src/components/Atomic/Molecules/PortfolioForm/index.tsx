@@ -35,7 +35,7 @@ export const PortfolioForm = ({
           )}
         </label>
         <input
-          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
+          className="text-input"
           type="text"
           {...register("name", { required: true })}
         />

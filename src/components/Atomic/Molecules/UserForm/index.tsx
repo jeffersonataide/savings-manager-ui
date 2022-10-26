@@ -51,7 +51,7 @@ export const UserForm = ({
             )}
           </label>
           <input
-            className="rounded-lg ml-3 p-2 border-slate-400 border-2"
+            className="text-input"
             type="text"
             {...register("username", {
               required: true,
@@ -69,7 +69,7 @@ export const UserForm = ({
             )}
           </label>
           <input
-            className="rounded-lg ml-3 p-2 border-slate-400 border-2"
+            className="text-input"
             type="password"
             {...register("password", { required: true })}
           />

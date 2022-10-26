@@ -35,7 +35,7 @@ export const DepositForm = ({
           )}
         </label>
         <input
-          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
+          className="text-input"
           type="number"
           {...register("amount", { required: true })}
         />
@@ -48,7 +48,7 @@ export const DepositForm = ({
           )}
         </label>
         <input
-          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
+          className="text-input"
           type="date"
           {...register("date", { required: true })}
         />
@@ -61,7 +61,7 @@ export const DepositForm = ({
           )}
         </label>
         <input
-          className="rounded-lg p-2 my-2 flex-grow border-slate-400 border-2"
+          className="text-input"
           type="text"
           {...register("description")}
         />
