@@ -12,7 +12,7 @@ export const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
   portfolioId,
 }) => {
   const query = useQuery(["portfolio", portfolioId], () =>
-    portfolioId ? fetchPortfolio(portfolioId) : null
+    fetchPortfolio(portfolioId)
   );
 
   if (query.isLoading) {

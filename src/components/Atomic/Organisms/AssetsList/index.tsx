@@ -17,7 +17,9 @@ interface AssetsListParams {
 }
 
 export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
-  const query = useQuery("assets", () => fetchAssets(portfolioId));
+  const query = useQuery(["assets", portfolioId], () =>
+    fetchAssets(portfolioId)
+  );
 
   const modalContext = useModal();
 

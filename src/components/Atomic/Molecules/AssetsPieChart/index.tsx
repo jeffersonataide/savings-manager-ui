@@ -10,7 +10,9 @@ interface AssetsPieChartProps {
 export const AssetsPieChart: React.FC<AssetsPieChartProps> = ({
   portfolioId,
 }) => {
-  const query = useQuery("assets", () => fetchAssets(portfolioId));
+  const query = useQuery(["assets", portfolioId], () =>
+    fetchAssets(portfolioId)
+  );
 
   if (query.isLoading || !query.data) {
     return <LoadingScreen />;
