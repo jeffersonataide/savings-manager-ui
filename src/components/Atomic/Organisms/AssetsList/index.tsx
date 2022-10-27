@@ -77,7 +77,10 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
       columns: [
         {
           content: (
-            <Link to={`/asset/${asset.id}`} className="block w-full">
+            <Link
+              to={`/asset/${asset.id}`}
+              className="block w-full text-blue-400 hover:text-blue-200"
+            >
               {asset.name.toLocaleUpperCase()}
             </Link>
           ),
