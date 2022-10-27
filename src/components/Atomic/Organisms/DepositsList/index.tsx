@@ -73,30 +73,32 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
 
   const rows: TableRow[] = query.data.sort(sortByDate).map((deposit) => {
     const formattedDepositDate = formatDateStringToLong(deposit.date);
-    return [
-      {
-        content: formattedDepositDate,
-      },
-      {
-        content: deposit.description ? deposit.description : "",
-      },
-      {
-        content: deposit.amount,
-      },
-      {
-        className: "text-right space-x-3",
-        content: (
-          <>
-            <button onClick={() => handleEditDeposit(deposit)}>
-              <EditIcon />
-            </button>
-            <button onClick={() => handleDeleteDeposit(deposit.id)}>
-              <TrashIcon />
-            </button>
-          </>
-        ),
-      },
-    ];
+    return {
+      columns: [
+        {
+          content: formattedDepositDate,
+        },
+        {
+          content: deposit.description ? deposit.description : "",
+        },
+        {
+          content: deposit.amount,
+        },
+        {
+          className: "text-right space-x-3",
+          content: (
+            <>
+              <button onClick={() => handleEditDeposit(deposit)}>
+                <EditIcon />
+              </button>
+              <button onClick={() => handleDeleteDeposit(deposit.id)}>
+                <TrashIcon />
+              </button>
+            </>
+          ),
+        },
+      ],
+    };
   });
   return <TableList headers={headers} rows={rows} />;
 };

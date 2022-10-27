@@ -26,7 +26,9 @@ export const AssetDetails = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-center text-3xl m-4">{query.data.name}</h1>
+      <h1 className="text-center text-3xl m-4">
+        {query.data.name.toLocaleUpperCase()} DEPOSITS
+      </h1>
       <DepositsChart assetName={query.data.name} assetId={query.data.id} />
       <DepositsList assetId={query.data.id} />
     </div>

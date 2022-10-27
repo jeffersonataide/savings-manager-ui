@@ -1,19 +1,26 @@
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
 import { fetchPortfolio } from "services/api/portfolios";
 import { AssetsList } from "components/Atomic/Organisms/AssetsList";
 import { AssetsPieChart } from "components/Atomic/Molecules/AssetsPieChart";
-import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
+import { Spinner } from "components/Atomic/Atoms/Spinner";
 
-export const PortfolioDetails = () => {
-  const { portfolioId } = useParams();
+interface PortfolioDetailsProps {
+  portfolioId: string;
+}
 
+export const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
+  portfolioId,
+}) => {
   const query = useQuery(["portfolio", portfolioId], () =>
     portfolioId ? fetchPortfolio(portfolioId) : null
   );
 
   if (query.isLoading) {
-    return <LoadingScreen />;
+    return (
+      <div className="w-1/6 py-10 mx-auto">
+        <Spinner />
+      </div>
+    );
   }
 
   if (query.isError && query.error instanceof Error) {
@@ -24,7 +31,9 @@ export const PortfolioDetails = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-center text-3xl m-4">{query.data?.name}</h1>
+      <h1 className="text-center text-3xl m-4 text-white">
+        {query.data?.name.toLocaleUpperCase()} ASSETS
+      </h1>
       <AssetsPieChart portfolioId={portfolioId} />
       <AssetsList portfolioId={portfolioId} />
     </div>

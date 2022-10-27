@@ -56,7 +56,7 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
   }
 
   const headers = [
-    "Name",
+    "Asset",
     <CreateItemModal
       modalProperties={{
         title: "Create Asset",
@@ -71,28 +71,30 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
   ];
 
   const rows: TableRow[] = query.data.map((asset) => {
-    return [
-      {
-        content: (
-          <Link to={`/asset/${asset.id}`} className="block w-full">
-            {asset.name}
-          </Link>
-        ),
-      },
-      {
-        className: "text-right space-x-3",
-        content: (
-          <>
-            <button onClick={() => handleEditAsset(asset)}>
-              <EditIcon />
-            </button>
-            <button onClick={() => handleDeleteAsset(asset.id)}>
-              <TrashIcon />
-            </button>
-          </>
-        ),
-      },
-    ];
+    return {
+      columns: [
+        {
+          content: (
+            <Link to={`/asset/${asset.id}`} className="block w-full">
+              {asset.name.toLocaleUpperCase()}
+            </Link>
+          ),
+        },
+        {
+          className: "text-right space-x-3",
+          content: (
+            <>
+              <button onClick={() => handleEditAsset(asset)}>
+                <EditIcon />
+              </button>
+              <button onClick={() => handleDeleteAsset(asset.id)}>
+                <TrashIcon />
+              </button>
+            </>
+          ),
+        },
+      ],
+    };
   });
 
   return <TableList headers={headers} rows={rows} />;

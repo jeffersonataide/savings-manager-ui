@@ -1,4 +1,4 @@
-import { VictoryPie, VictoryTheme } from "victory";
+import { VictoryLabel, VictoryPie, VictoryTheme } from "victory";
 
 interface PieChartItem {
   x: string;
@@ -14,8 +14,9 @@ export const PieChart: React.FC<PieChartProps> = ({ data }) => {
     <VictoryPie
       animate={{ duration: 6000, easing: "bounce" }}
       labels={({ datum }: { datum: PieChartItem }) =>
-        `${datum.x} - $${Math.round(datum.y)}`
+        `${datum.x.toLocaleUpperCase()} - $${Math.round(datum.y)}`
       }
+      labelComponent={<VictoryLabel style={{ fill: "white", fontSize: 25 }} />}
       innerRadius={60}
       labelRadius={({ radius }) => Number(radius) + 20}
       style={{

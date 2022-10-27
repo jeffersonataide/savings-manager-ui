@@ -35,7 +35,7 @@ export const AssetsPieChart: React.FC<AssetsPieChartProps> = ({
   const hasDeposits = !!assetsData.find((asset) => asset.y > 0);
 
   return hasDeposits ? (
-    <div className="h-96 w-screen p-10">
+    <div className="h-96 w-full p-10">
       <PieChart data={assetsData} />
     </div>
   ) : null;

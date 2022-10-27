@@ -4,7 +4,6 @@ import { AssetDetails } from "page/AssetDetails";
 import { CreateAccount } from "page/CreateAccount";
 import { Home } from "page/Home";
 import { Login } from "page/Login";
-import { PortfolioDetails } from "page/PortfolioDetails";
 import { Portfolios } from "page/Portfolios";
 import { Layout } from "components/Atomic/Templates/Layout";
 import { useEffect } from "react";
@@ -36,11 +35,6 @@ export const openRoutes: RouteInfo[] = [
 
 export const protectedRoutes: RouteInfo[] = [
   { name: "Portfolios", path: "/portfolio", element: <Portfolios /> },
-  {
-    name: "Portfolio details",
-    path: "/portfolio/:portfolioId",
-    element: <PortfolioDetails />,
-  },
   { name: "Asset details", path: "/asset/:assetId", element: <AssetDetails /> },
 ];
 
