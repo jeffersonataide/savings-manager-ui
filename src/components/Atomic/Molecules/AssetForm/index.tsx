@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { TAssetBase } from "services/api/assets";
+import { TAssetBase } from "@/services/api/assets";
 import { SubmitButton } from "../SubmitButton";
 
 interface AssetFormParams {

@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { fetchAssets } from "services/api/assets";
-import { PieChart } from "components/Atomic/Atoms/PieChart";
+import { fetchAssets } from "@/services/api/assets";
+import { PieChart } from "@/components/Atomic/Atoms/PieChart";
 import { LoadingScreen } from "../LoadingScreen";
 
 interface AssetsPieChartProps {

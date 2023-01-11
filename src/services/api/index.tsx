@@ -1,7 +1,11 @@
-import axios from "axios";
-import { useUserStore } from "store/userStore";
+import axios, { AxiosHeaders } from "axios";
+import { useUserStore } from "@/store/userStore";
 
-const API_URL = process.env.REACT_APP_API_URL;
+interface Headers extends AxiosHeaders {
+  Authorization: string;
+}
+
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 const api = axios.create({
   baseURL: API_URL,
@@ -14,7 +18,7 @@ api.interceptors.request.use((config) => {
     config.headers = {
       ...config.headers,
       Authorization: `Bearer ${jwt}`,
-    };
+    } as Headers;
   }
   return config;
 });

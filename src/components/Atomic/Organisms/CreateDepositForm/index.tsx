@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { createDeposit, TDepositBase } from "services/api/deposits";
-import { DepositForm } from "components/Atomic/Molecules/DepositForm";
+import { createDeposit, TDepositBase } from "@/services/api/deposits";
+import { DepositForm } from "@/components/Atomic/Molecules/DepositForm";
 
 interface CreateDepositFormParams {
   assetId: string;

@@ -1,4 +1,4 @@
-import { PortfoliosList } from "components/Atomic/Organisms/PortfoliosList";
+import { PortfoliosList } from "@/components/Atomic/Organisms/PortfoliosList";
 
 export const Portfolios = () => {
   return (

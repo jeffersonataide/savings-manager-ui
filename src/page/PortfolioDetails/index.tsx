@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import { fetchPortfolio } from "services/api/portfolios";
-import { AssetsList } from "components/Atomic/Organisms/AssetsList";
-import { AssetsPieChart } from "components/Atomic/Molecules/AssetsPieChart";
-import { Spinner } from "components/Atomic/Atoms/Spinner";
+import { fetchPortfolio } from "@/services/api/portfolios";
+import { AssetsList } from "@/components/Atomic/Organisms/AssetsList";
+import { AssetsPieChart } from "@/components/Atomic/Molecules/AssetsPieChart";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 interface PortfolioDetailsProps {
   portfolioId: string;

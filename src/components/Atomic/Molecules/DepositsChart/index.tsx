@@ -1,8 +1,8 @@
 import { useQuery } from "react-query";
-import { fetchDeposits } from "services/api/deposits";
-import { formatDateStringToLong } from "utils/dateFormating";
-import { sortByDate } from "utils/sorting";
-import { LineChart } from "components/Atomic/Atoms/LineChart";
+import { fetchDeposits } from "@/services/api/deposits";
+import { formatDateStringToLong } from "@/utils/dateFormating";
+import { sortByDate } from "@/utils/sorting";
+import { LineChart } from "@/components/Atomic/Atoms/LineChart";
 import { LoadingScreen } from "../LoadingScreen";
 
 interface DepositsChartProps {

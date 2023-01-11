@@ -3,8 +3,8 @@ import {
   editPortfolio,
   TPortfolio,
   TPortfolioBase,
-} from "services/api/portfolios";
-import { PortfolioForm } from "components/Atomic/Molecules/PortfolioForm";
+} from "@/services/api/portfolios";
+import { PortfolioForm } from "@/components/Atomic/Molecules/PortfolioForm";
 
 interface EditPortfolioFormParams {
   portfolio: TPortfolio;

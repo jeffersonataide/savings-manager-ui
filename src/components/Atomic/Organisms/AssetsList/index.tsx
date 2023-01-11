@@ -1,16 +1,16 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useModal } from "contexts/modalContext";
-import { fetchAssets, TAsset } from "services/api/assets";
-import { DeleteAssetForm } from "components/Atomic/Organisms/DeleteAssetForm";
-import { EditAssetForm } from "components/Atomic/Organisms/EditAssetForm";
-import { EditIcon } from "components/Atomic/Atoms/EditIcon";
-import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
-import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
-import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
-import { CreateAssetForm } from "components/Atomic/Organisms/CreateAssetForm";
-import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
+import { useModal } from "@/contexts/modalContext";
+import { fetchAssets, TAsset } from "@/services/api/assets";
+import { DeleteAssetForm } from "@/components/Atomic/Organisms/DeleteAssetForm";
+import { EditAssetForm } from "@/components/Atomic/Organisms/EditAssetForm";
+import { EditIcon } from "@/components/Atomic/Atoms/EditIcon";
+import { TrashIcon } from "@/components/Atomic/Atoms/TrashIcon";
+import { TableList, TableRow } from "@/components/Atomic/Molecules/TableList";
+import { CreateItemModal } from "@/components/Atomic/Molecules/CreateItemModal";
+import { CreateAssetForm } from "@/components/Atomic/Organisms/CreateAssetForm";
+import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
 
 interface AssetsListParams {
   portfolioId: string;

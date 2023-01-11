@@ -1,8 +1,8 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { login, TUserLogin } from "services/api/login";
-import { UserForm } from "components/Atomic/Molecules/UserForm";
-import { useUserStore } from "store/userStore";
+import { login, TUserLogin } from "@/services/api/login";
+import { UserForm } from "@/components/Atomic/Molecules/UserForm";
+import { useUserStore } from "@/store/userStore";
 
 export const LoginForm = () => {
   const mutation = useMutation(login);

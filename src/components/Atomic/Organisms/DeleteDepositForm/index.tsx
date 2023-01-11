@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import { deleteDeposit } from "services/api/deposits";
-import { DeleteItemForm } from "components/Atomic/Molecules/DeleteItemForm";
+import { deleteDeposit } from "@/services/api/deposits";
+import { DeleteItemForm } from "@/components/Atomic/Molecules/DeleteItemForm";
 
 interface DeleteDepositFormParams {
   depositId: string;

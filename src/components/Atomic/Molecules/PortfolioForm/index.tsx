@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { TPortfolioBase } from "services/api/portfolios";
+import { TPortfolioBase } from "@/services/api/portfolios";
 import { SubmitButton } from "../SubmitButton";
 
 interface PortfolioFormParams {

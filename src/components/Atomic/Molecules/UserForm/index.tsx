@@ -1,5 +1,5 @@
-import { TUserCreate } from "services/api/users";
-import { Box } from "components/Atomic/Atoms/Box";
+import { TUserCreate } from "@/services/api/users";
+import { Box } from "@/components/Atomic/Atoms/Box";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { SubmitButton } from "../SubmitButton";
 

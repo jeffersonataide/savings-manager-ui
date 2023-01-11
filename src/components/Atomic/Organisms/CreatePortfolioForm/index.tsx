@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { TPortfolioBase, createPortfolio } from "services/api/portfolios";
-import { PortfolioForm } from "components/Atomic/Molecules/PortfolioForm";
+import { TPortfolioBase, createPortfolio } from "@/services/api/portfolios";
+import { PortfolioForm } from "@/components/Atomic/Molecules/PortfolioForm";
 
 interface CreatePortfolioFormParams {
   onSubmit?: () => void;

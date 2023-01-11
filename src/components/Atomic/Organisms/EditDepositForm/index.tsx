@@ -1,6 +1,6 @@
-import { DepositForm } from "components/Atomic/Molecules/DepositForm";
+import { DepositForm } from "@/components/Atomic/Molecules/DepositForm";
 import { useMutation, useQueryClient } from "react-query";
-import { TDepositBase, TDeposit, editDeposit } from "services/api/deposits";
+import { TDepositBase, TDeposit, editDeposit } from "@/services/api/deposits";
 
 interface EditDepositFormParams {
   deposit: TDeposit;

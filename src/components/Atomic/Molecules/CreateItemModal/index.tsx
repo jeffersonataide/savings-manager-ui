@@ -1,4 +1,4 @@
-import { TModalProperties, useModal } from "contexts/modalContext";
+import { TModalProperties, useModal } from "@/contexts/modalContext";
 import { PlusIcon } from "@heroicons/react/20/solid";
 
 interface CreateItemModalProps {

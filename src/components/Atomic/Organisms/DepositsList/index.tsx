@@ -1,16 +1,16 @@
 import { useQuery } from "react-query";
-import { fetchDeposits, TDeposit } from "services/api/deposits";
-import { useModal } from "contexts/modalContext";
-import { sortByDate } from "utils/sorting";
-import { formatDateStringToLong } from "utils/dateFormating";
-import { DeleteDepositForm } from "components/Atomic/Organisms/DeleteDepositForm";
-import { EditDepositForm } from "components/Atomic/Organisms/EditDepositForm";
-import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
-import { CreateDepositForm } from "components/Atomic/Organisms/CreateDepositForm";
-import { EditIcon } from "components/Atomic/Atoms/EditIcon";
-import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
-import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
-import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
+import { fetchDeposits, TDeposit } from "@/services/api/deposits";
+import { useModal } from "@/contexts/modalContext";
+import { sortByDate } from "@/utils/sorting";
+import { formatDateStringToLong } from "@/utils/dateFormating";
+import { DeleteDepositForm } from "@/components/Atomic/Organisms/DeleteDepositForm";
+import { EditDepositForm } from "@/components/Atomic/Organisms/EditDepositForm";
+import { CreateItemModal } from "@/components/Atomic/Molecules/CreateItemModal";
+import { CreateDepositForm } from "@/components/Atomic/Organisms/CreateDepositForm";
+import { EditIcon } from "@/components/Atomic/Atoms/EditIcon";
+import { TrashIcon } from "@/components/Atomic/Atoms/TrashIcon";
+import { TableList, TableRow } from "@/components/Atomic/Molecules/TableList";
+import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
 
 interface DepositsListParams {
   assetId: string;

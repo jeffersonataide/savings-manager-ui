@@ -1,13 +1,14 @@
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { AssetDetails } from "page/AssetDetails";
-import { CreateAccount } from "page/CreateAccount";
-import { Home } from "page/Home";
-import { Login } from "page/Login";
-import { Portfolios } from "page/Portfolios";
-import { Layout } from "components/Atomic/Templates/Layout";
 import { useEffect } from "react";
-import { useUserStore } from "store/userStore";
+
+import { AssetDetails } from "@/page/AssetDetails";
+import { CreateAccount } from "@/page/CreateAccount";
+import { Home } from "@/page/Home";
+import { Login } from "@/page/Login";
+import { Portfolios } from "@/page/Portfolios";
+import { Layout } from "@/components/Atomic/Templates/Layout";
+import { useUserStore } from "@/store/userStore";
 
 interface RouteInfo {
   name: string;

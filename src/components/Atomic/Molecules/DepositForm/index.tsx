@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { TDepositBase } from "services/api/deposits";
+import { TDepositBase } from "@/services/api/deposits";
 import { SubmitButton } from "../SubmitButton";
 
 interface DepositFormParams {

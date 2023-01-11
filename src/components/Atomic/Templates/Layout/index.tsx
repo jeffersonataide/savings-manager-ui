@@ -1,5 +1,5 @@
-import { Footer } from "components/Atomic/Organisms/Footer";
-import { Nav } from "components/Atomic/Organisms/Nav";
+import { Footer } from "@/components/Atomic/Organisms/Footer";
+import { Nav } from "@/components/Atomic/Organisms/Nav";
 
 interface LayoutProps {
   children: React.ReactNode;

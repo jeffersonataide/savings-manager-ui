@@ -1,10 +1,10 @@
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
-import { DepositsChart } from "components/Atomic/Molecules/DepositsChart";
-import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
-import { DepositsList } from "components/Atomic/Organisms/DepositsList";
+import { DepositsChart } from "@/components/Atomic/Molecules/DepositsChart";
+import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
+import { DepositsList } from "@/components/Atomic/Organisms/DepositsList";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchAsset } from "services/api/assets";
+import { fetchAsset } from "@/services/api/assets";
 
 export const AssetDetails = () => {
   const { assetId } = useParams();

@@ -1,5 +1,6 @@
-import { PortfoliosList } from "components/Atomic/Organisms/PortfoliosList";
-import { useUserStore } from "store/userStore";
+import { useUserStore } from "@/store/userStore";
+
+import { PortfoliosList } from "@/components/Atomic/Organisms/PortfoliosList";
 
 export const Home = () => {
   const isLogged = useUserStore((state) => state.isLogged);

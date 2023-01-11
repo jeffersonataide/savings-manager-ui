@@ -1,4 +1,4 @@
-import { Spinner } from "components/Atomic/Atoms/Spinner";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 export const LoadingScreen: React.FC = () => {
   return (

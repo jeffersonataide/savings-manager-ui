@@ -1,4 +1,4 @@
-import { Spinner } from "components/Atomic/Atoms/Spinner";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 interface SubmitButttonProps {
   isLoading: boolean;

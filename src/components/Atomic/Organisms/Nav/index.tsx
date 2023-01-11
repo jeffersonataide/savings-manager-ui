@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useUserStore } from "store/userStore";
-import { openRoutes, protectedRoutes } from "components/Router";
+import { useUserStore } from "@/store/userStore";
+import { openRoutes, protectedRoutes } from "@/components/Router";
 
 const openLinks = ["Home"];
 const closedLinks = ["Portfolios"];

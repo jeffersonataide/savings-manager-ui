@@ -1,15 +1,15 @@
 import { useQuery } from "react-query";
-import { fetchPortfolios, TPortfolio } from "services/api/portfolios";
-import { EditPortfolioForm } from "components/Atomic/Organisms/EditPortfolioForm";
-import { useModal } from "contexts/modalContext";
-import { DeletePortfolioForm } from "components/Atomic/Organisms/DeletePortfolioForm";
-import { EditIcon } from "components/Atomic/Atoms/EditIcon";
-import { TrashIcon } from "components/Atomic/Atoms/TrashIcon";
-import { TableList, TableRow } from "components/Atomic/Molecules/TableList";
-import { CreateItemModal } from "components/Atomic/Molecules/CreateItemModal";
-import { CreatePortfolioForm } from "components/Atomic/Organisms/CreatePortfolioForm";
-import { LoadingScreen } from "components/Atomic/Molecules/LoadingScreen";
-import { PortfolioDetails } from "page/PortfolioDetails";
+import { fetchPortfolios, TPortfolio } from "@/services/api/portfolios";
+import { EditPortfolioForm } from "@/components/Atomic/Organisms/EditPortfolioForm";
+import { useModal } from "@/contexts/modalContext";
+import { DeletePortfolioForm } from "@/components/Atomic/Organisms/DeletePortfolioForm";
+import { EditIcon } from "@/components/Atomic/Atoms/EditIcon";
+import { TrashIcon } from "@/components/Atomic/Atoms/TrashIcon";
+import { TableList, TableRow } from "@/components/Atomic/Molecules/TableList";
+import { CreateItemModal } from "@/components/Atomic/Molecules/CreateItemModal";
+import { CreatePortfolioForm } from "@/components/Atomic/Organisms/CreatePortfolioForm";
+import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
+import { PortfolioDetails } from "@/page/PortfolioDetails";
 import { useCallback, useState } from "react";
 import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/20/solid";
 

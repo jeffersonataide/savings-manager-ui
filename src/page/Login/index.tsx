@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserStore } from "store/userStore";
-import { LoginForm } from "components/Atomic/Organisms/LoginForm";
+import { useUserStore } from "@/store/userStore";
+import { LoginForm } from "@/components/Atomic/Organisms/LoginForm";
 
 export const Login = () => {
   const navigate = useNavigate();

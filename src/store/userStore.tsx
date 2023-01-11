@@ -1,6 +1,6 @@
 import create from "zustand";
-import { getUserMe, TUserBase } from "services/api/users";
-import { getLocalJWT, removeLocalJWT, setLocalJWT } from "utils/localStorage";
+import { getUserMe, TUserBase } from "@/services/api/users";
+import { getLocalJWT, removeLocalJWT, setLocalJWT } from "@/utils/localStorage";
 
 interface TUserState {
   isLogged: boolean;

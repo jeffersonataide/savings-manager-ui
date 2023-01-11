@@ -1,4 +1,4 @@
-import { TDeposit } from "services/api/deposits";
+import { TDeposit } from "@/services/api/deposits";
 
 export const sortByDate = (a: TDeposit, b: TDeposit) => {
   const dateA = new Date(a.date);
