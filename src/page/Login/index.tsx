@@ -14,7 +14,7 @@ export const Login = () => {
   }, [isLogged, navigate]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center flex-1 justify-center">
       <LoginForm />
       Don't have an account yet?
       <Link className="text-blue-600 hover:text-blue-300" to="/create-account">
