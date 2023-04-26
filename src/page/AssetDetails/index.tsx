@@ -36,7 +36,7 @@ export const AssetDetails = () => {
         <button className="h-10 w-10 m-5" onClick={handleBackButton}>
           <ArrowLeftIcon className="hover:fill-slate-400" />
         </button>
-        <h1 className="text-center text-3xl m-4">
+        <h1 className="text-center text-xl m-4">
           {query.data.name.toLocaleUpperCase()} DEPOSITS
         </h1>
       </div>

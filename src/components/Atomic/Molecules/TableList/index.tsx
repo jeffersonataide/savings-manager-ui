@@ -42,7 +42,7 @@ export const TableList: React.FC<TableListProps> = ({ headers, rows }) => {
   });
 
   return (
-    <table className="border-separate border-spacing-y-2 text-2xl w-full">
+    <table className="border-separate border-spacing-y-2 text-xl w-full">
       <thead>
         <tr className="bg-emerald-300 text-white">
           {headers.map((header) => (

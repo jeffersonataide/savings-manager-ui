@@ -31,7 +31,7 @@ export const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-center text-3xl m-4 text-white">
+      <h1 className="text-center text-xl m-4 text-white">
         {query.data?.name.toLocaleUpperCase()} ASSETS
       </h1>
       <AssetsPieChart portfolioId={portfolioId} />
