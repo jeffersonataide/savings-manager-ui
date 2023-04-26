@@ -3,7 +3,7 @@ import { CreateUserForm } from "@/components/Atomic/Organisms/CreateUserForm";
 
 export const CreateAccount = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center flex-1 justify-center">
       <CreateUserForm />
       Already have an account?
       <Link className="text-blue-600 hover:text-blue-300" to="/login">
