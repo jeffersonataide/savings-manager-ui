@@ -91,8 +91,8 @@ export const PortfoliosList = () => {
           columns: [
             {
               content: (
-                <div className="w-full flex">
-                  {portfolio.name.toLocaleUpperCase()}
+                <div className="w-full flex justify-between">
+                  <p>{portfolio.name.toLocaleUpperCase()}</p>
                   <button
                     className="ml-20 text-white"
                     onClick={() => toggleDetailsView(portfolio.id)}
