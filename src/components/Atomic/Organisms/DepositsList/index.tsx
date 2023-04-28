@@ -10,7 +10,7 @@ import { CreateDepositForm } from "@/components/Atomic/Organisms/CreateDepositFo
 import { EditIcon } from "@/components/Atomic/Atoms/EditIcon";
 import { TrashIcon } from "@/components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "@/components/Atomic/Molecules/TableList";
-import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 interface DepositsListParams {
   assetId: string;
@@ -21,7 +21,11 @@ export const DepositsList: React.FC<DepositsListParams> = ({ assetId }) => {
   const modalContext = useModal();
 
   if (query.isLoading) {
-    return <LoadingScreen />;
+    return (
+      <div className="w-10 py-5 mx-auto">
+        <Spinner />
+      </div>
+    );
   }
 
   if (query.isError && query.error instanceof Error) {

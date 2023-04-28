@@ -17,7 +17,7 @@ export const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
 
   if (query.isLoading) {
     return (
-      <div className="w-1/6 py-10 mx-auto">
+      <div className="w-10 py-5 mx-auto">
         <Spinner />
       </div>
     );

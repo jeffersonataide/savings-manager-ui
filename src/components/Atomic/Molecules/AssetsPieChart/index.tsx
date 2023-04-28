@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchAssets } from "@/services/api/assets";
 import { PieChart } from "@/components/Atomic/Atoms/PieChart";
-import { LoadingScreen } from "../LoadingScreen";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 interface AssetsPieChartProps {
   portfolioId: string;
@@ -15,7 +15,11 @@ export const AssetsPieChart: React.FC<AssetsPieChartProps> = ({
   );
 
   if (query.isLoading || !query.data) {
-    return <LoadingScreen />;
+    return (
+      <div className="w-10 py-5 mx-auto">
+        <Spinner />
+      </div>
+    );
   }
 
   if (query.isError && query.error instanceof Error) {

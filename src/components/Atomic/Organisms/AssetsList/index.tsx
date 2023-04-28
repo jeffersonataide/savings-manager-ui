@@ -10,7 +10,7 @@ import { TrashIcon } from "@/components/Atomic/Atoms/TrashIcon";
 import { TableList, TableRow } from "@/components/Atomic/Molecules/TableList";
 import { CreateItemModal } from "@/components/Atomic/Molecules/CreateItemModal";
 import { CreateAssetForm } from "@/components/Atomic/Organisms/CreateAssetForm";
-import { LoadingScreen } from "@/components/Atomic/Molecules/LoadingScreen";
+import { Spinner } from "@/components/Atomic/Atoms/Spinner";
 
 interface AssetsListParams {
   portfolioId: string;
@@ -24,7 +24,11 @@ export const AssetsList: React.FC<AssetsListParams> = ({ portfolioId }) => {
   const modalContext = useModal();
 
   if (query.isLoading) {
-    return <LoadingScreen />;
+    return (
+      <div className="w-10 py-5 mx-auto">
+        <Spinner />
+      </div>
+    );
   }
 
   if (query.isError && query.error instanceof Error) {
